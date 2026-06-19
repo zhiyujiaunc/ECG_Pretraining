@@ -1,0 +1,41 @@
+name: 'wECGdb 12-lead ECG pretraining'
+description: Convert Zenodo wECGdb reference_12_lead recordings to train/val/test pt files before running.
+
+parameters:
+    training:
+        'data_dir': './data_wecg_12lead'
+        'data_name': 'wECGdb_12lead'
+        'train_data_file': 'train.pt'
+        'val_data_file': 'val.pt'
+        'test_data_file': 'test.pt'
+        'train_length': 3000
+        'test_length': 3000
+        'classes': 1
+        'device': 'cpu'
+        'algorithm': 'bioFAME'
+        'tb_name': 'wecg-12lead-pretrain'
+        'modality': ['I', 'II', 'III', 'aVR', 'aVL', 'aVF', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6']
+        'mod_channels': 12
+        'num_workers': 0
+        'seed': 0
+        'epochs': 300
+        'lr': 0.001
+        'batch_size': 64
+        'reconstruction': True
+        'skip_validation': True
+        'test_every_epoch': 10
+
+    hparams:
+        'masking_ratio': 0.5
+        'cls_token_mode': 'avg'
+        'trans1_depth': 4
+        'patch_size': 20
+        'modality-decoder': False
+        'post_norm': False
+        'modality_embedding_token': False
+        'revin': True
+        'revin_recover': True
+        'include_Enc2': True
+        'fft_head': 8
+        'fft_mode': 'pool'
+        'dim': 64

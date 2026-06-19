@@ -1,0 +1,11 @@
+.DS_Store
+**/.venv/
+**/__pycache__/
+**/*.pyc
+**/TB_logs*/
+**/model_ckpt/
+run_logs/
+visualizations/
+wECG_dataset/
+wECG_dataset.zip
+data_clips/
