@@ -78,7 +78,7 @@ def metrics(pred, target):
     pooled_ranges = target.max(dim=0).values - target.min(dim=0).values
     sdnn_tol = 0.05 * pooled_ranges[1].clamp_min(1e-6)
     rmssd_tol = 0.05 * pooled_ranges[2].clamp_min(1e-6)
-    return {
+    row = {
         "hr_mae": float(hr_err.abs().mean()),
         "hr_std": float(hr_err.abs().std(unbiased=False)),
         "hr_rmse": float(torch.sqrt((hr_err**2).mean())),
@@ -89,19 +89,26 @@ def metrics(pred, target):
         "sdnn": float((err[:, 1].abs() < sdnn_tol).float().mean() * 100.0),
         "n": int(target.shape[0]),
     }
+    if target.shape[1] > 3:
+        pnn50_tol = 0.05 * pooled_ranges[3].clamp_min(1e-6)
+        row["pnn50"] = float((err[:, 3].abs() < pnn50_tol).float().mean() * 100.0)
+    return row
 
 
 def print_table(title, group_metrics):
+    has_pnn50 = any("pnn50" in row for row in group_metrics.values())
     print("=" * 110)
     print(title)
     print("HR: L1 regression metrics | HRV: within 5% of pooled GT range")
     print("=" * 110)
-    print(f"{'Dataset':<16}{'HR MAE+STD':>16}{'RMSE':>10}{'L1<2':>10}{'L1<5':>10}{'L1<10%r':>12}{'RMSSD':>10}{'SDNN':>10}{'N':>8}")
+    pnn50_header = f"{'pNN50':>10}" if has_pnn50 else ""
+    print(f"{'Dataset':<16}{'HR MAE+STD':>16}{'RMSE':>10}{'L1<2':>10}{'L1<5':>10}{'L1<10%r':>12}{'RMSSD':>10}{'SDNN':>10}{pnn50_header}{'N':>8}")
     print("-" * 110)
     for name in ("Gesture", "Static", "Free Form"):
         if name not in group_metrics:
             continue
         row = group_metrics[name]
+        pnn50_value = f"{row['pnn50']:>9.2f}%" if has_pnn50 else ""
         print(
             f"{name:<16}"
             f"{row['hr_mae']:>8.2f}+{row['hr_std']:<6.2f}"
@@ -111,6 +118,7 @@ def print_table(title, group_metrics):
             f"{row['l1_lt_10pct']:>11.2f}%"
             f"{row['rmssd']:>9.2f}%"
             f"{row['sdnn']:>9.2f}%"
+            f"{pnn50_value}"
             f"{row['n']:>8d}"
         )
     print("-" * 110)
@@ -155,7 +163,7 @@ def main():
         group_metrics[activity] = metrics(pred, target)
 
     split_text = ", ".join(args.splits)
-    print_table(f"RESULTS - WRIST ECG HR/HRV REGRESSION ({split_text})", group_metrics)
+    print_table(f"RESULTS - WRIST ECG HR/HRV REGRESSION ({split_text}) | head={head}", group_metrics)
 
 
 if __name__ == "__main__":

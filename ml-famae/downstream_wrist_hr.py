@@ -11,7 +11,7 @@ from bioFAME.models.algorithms import get_algorithm_class
 from bioFAME.models.hparams_registry import _hparams
 
 
-TARGET_NAMES = ("hr_bpm", "sdnn_ms", "rmssd_ms")
+TARGET_NAMES = ("hr_bpm", "sdnn_ms", "rmssd_ms", "pnn50_pct")
 
 
 class HRRegressor(nn.Module):

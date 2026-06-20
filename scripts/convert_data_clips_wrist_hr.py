@@ -30,7 +30,7 @@ def detect_chest_rpeaks(chest, fs):
     return np.asarray(info["ECG_R_Peaks"], dtype=np.int64)
 
 
-def window_metrics_from_peaks(peaks, start, stop, fs, min_rr, max_rr):
+def window_metrics_from_peaks(peaks, start, stop, fs, min_rr, max_rr, include_pnn50=False):
     window_peaks = peaks[(peaks >= start) & (peaks < stop)]
     if len(window_peaks) < 3:
         return None
@@ -44,7 +44,11 @@ def window_metrics_from_peaks(peaks, start, stop, fs, min_rr, max_rr):
     rmssd = float(np.sqrt(np.mean(np.diff(rr) ** 2)) * 1000.0)
     if not (35.0 <= hr <= 220.0):
         return None
-    return hr, sdnn, rmssd
+    if not include_pnn50:
+        return hr, sdnn, rmssd
+    rr_diff_ms = np.abs(np.diff(rr)) * 1000.0
+    pnn50 = float(100.0 * np.mean(rr_diff_ms > 50.0)) if len(rr_diff_ms) else 0.0
+    return hr, sdnn, rmssd, pnn50
 
 
 def subject_id(path):
@@ -124,6 +128,7 @@ def convert(args):
                 args.target_fs,
                 args.min_rr,
                 args.max_rr,
+                include_pnn50=args.include_pnn50,
             )
             if metrics is None:
                 counts["windows_bad_label"] += 1
@@ -148,6 +153,7 @@ def convert(args):
                     "hr_bpm": metrics[0],
                     "sdnn_ms": metrics[1],
                     "rmssd_ms": metrics[2],
+                    **({"pnn50_pct": metrics[3]} if args.include_pnn50 else {}),
                 }
             )
 
@@ -157,7 +163,7 @@ def convert(args):
             labels = torch.stack(split_labels[split_name])
         else:
             samples = torch.empty(0, 1, args.window_size)
-            labels = torch.empty(0, 3)
+            labels = torch.empty(0, 4 if args.include_pnn50 else 3)
 
         save_path = output_dir / f"{split_name}.pt"
         torch.save({"samples": samples, "labels": labels}, save_path)
@@ -182,6 +188,7 @@ def main():
     parser.add_argument("--wrist_channel", type=int, default=1)
     parser.add_argument("--min_rr", type=float, default=0.30)
     parser.add_argument("--max_rr", type=float, default=2.00)
+    parser.add_argument("--include_pnn50", action="store_true")
     parser.add_argument("--val_ratio", type=float, default=0.1)
     parser.add_argument("--test_ratio", type=float, default=0.1)
     parser.add_argument("--seed", type=int, default=0)
