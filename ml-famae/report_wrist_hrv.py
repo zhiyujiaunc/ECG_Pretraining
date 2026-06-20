@@ -7,7 +7,7 @@ import torch
 
 from bioFAME.models.algorithms import get_algorithm_class
 from bioFAME.models.hparams_registry import _hparams
-from downstream_wrist_hr import HRCNNRegressor, HRRegressor, TARGET_NAMES, encode_for_head
+from downstream_wrist_hr import TARGET_NAMES, build_regressor, encode_for_head
 
 
 warnings.filterwarnings("ignore", message="An output with one or more elements was resized.*")
@@ -42,10 +42,14 @@ def load_model(checkpoint_path, device):
     encoder.load_state_dict(checkpoint["encoder"])
     encoder.eval()
 
-    if head == "cnn":
-        regressor = HRCNNRegressor(hparams["dim"], hidden_dim=hidden_dim, dropout=dropout, output_dim=output_dim).to(device)
-    else:
-        regressor = HRRegressor(encoder.linear_clf_dim, hidden_dim=hidden_dim, dropout=dropout, output_dim=output_dim).to(device)
+    regressor = build_regressor(
+        head,
+        token_dim=hparams["dim"],
+        pooled_dim=encoder.linear_clf_dim,
+        hidden_dim=hidden_dim,
+        dropout=dropout,
+        output_dim=output_dim,
+    ).to(device)
     regressor.load_state_dict(checkpoint["regressor"])
     regressor.eval()
 

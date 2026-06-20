@@ -16,6 +16,29 @@ HEAD="${HEAD:-cnn}"
 LENGTH="${LENGTH:-3000}"
 OUTPUT_DIM="${OUTPUT_DIM:-1}"
 OUTPUT_DIR="${OUTPUT_DIR:-./model_ckpt/our-wrist-hr-${HEAD}-from-12lead-50ep}"
+LR="${LR:-1e-3}"
+ENCODER_LR="${ENCODER_LR:-1e-4}"
+WEIGHT_DECAY="${WEIGHT_DECAY:-1e-4}"
+HIDDEN_DIM="${HIDDEN_DIM:-64}"
+DROPOUT="${DROPOUT:-0.2}"
+LOSS="${LOSS:-mse}"
+OPTIMIZER="${OPTIMIZER:-adam}"
+GRAD_CLIP="${GRAD_CLIP:-0}"
+UNFREEZE_LAST_N="${UNFREEZE_LAST_N:-0}"
+FREEZE_ENCODER="${FREEZE_ENCODER:-1}"
+CHASE_STYLE="${CHASE_STYLE:-0}"
+COSINE_LR="${COSINE_LR:-0}"
+
+EXTRA_ARGS=()
+if [[ "${FREEZE_ENCODER}" == "1" ]]; then
+  EXTRA_ARGS+=(--freeze_encoder)
+fi
+if [[ "${CHASE_STYLE}" == "1" ]]; then
+  EXTRA_ARGS+=(--chase_style)
+fi
+if [[ "${COSINE_LR}" == "1" ]]; then
+  EXTRA_ARGS+=(--cosine_lr)
+fi
 
 cd "${ML_FAMAE_DIR}"
 
@@ -31,4 +54,13 @@ cd "${ML_FAMAE_DIR}"
   --length "${LENGTH}" \
   --output_dim "${OUTPUT_DIM}" \
   --head "${HEAD}" \
-  --freeze_encoder
+  --lr "${LR}" \
+  --encoder_lr "${ENCODER_LR}" \
+  --weight_decay "${WEIGHT_DECAY}" \
+  --hidden_dim "${HIDDEN_DIM}" \
+  --dropout "${DROPOUT}" \
+  --loss "${LOSS}" \
+  --optimizer "${OPTIMIZER}" \
+  --grad_clip "${GRAD_CLIP}" \
+  --unfreeze_last_n "${UNFREEZE_LAST_N}" \
+  "${EXTRA_ARGS[@]}"

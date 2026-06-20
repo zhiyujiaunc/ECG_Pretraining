@@ -70,6 +70,102 @@ class HRCNNRegressor(nn.Module):
         return self.mlp(pooled)
 
 
+class HRLSTMRegressor(nn.Module):
+    def __init__(self, input_dim, hidden_dim=64, dropout=0.2, output_dim=1):
+        super().__init__()
+        self.lstm = nn.LSTM(
+            input_size=input_dim,
+            hidden_size=hidden_dim,
+            num_layers=2,
+            batch_first=True,
+            bidirectional=True,
+            dropout=dropout,
+        )
+        self.mlp = nn.Sequential(
+            nn.LayerNorm(hidden_dim * 4),
+            nn.Linear(hidden_dim * 4, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim, output_dim),
+        )
+
+    def forward(self, tokens):
+        seq, _ = self.lstm(tokens)
+        pooled = torch.cat([seq.mean(dim=1), seq.amax(dim=1)], dim=-1)
+        return self.mlp(pooled)
+
+
+class UNetBlock(nn.Module):
+    def __init__(self, in_channels, out_channels, dropout=0.2):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv1d(in_channels, out_channels, kernel_size=3, padding=1),
+            nn.BatchNorm1d(out_channels),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Conv1d(out_channels, out_channels, kernel_size=3, padding=1),
+            nn.BatchNorm1d(out_channels),
+            nn.GELU(),
+        )
+
+    def forward(self, x):
+        return self.net(x)
+
+
+class HRUNetRegressor(nn.Module):
+    def __init__(self, input_dim, hidden_dim=64, dropout=0.2, output_dim=1):
+        super().__init__()
+        self.stem = UNetBlock(input_dim, hidden_dim, dropout=dropout)
+        self.down1 = UNetBlock(hidden_dim, hidden_dim * 2, dropout=dropout)
+        self.down2 = UNetBlock(hidden_dim * 2, hidden_dim * 4, dropout=dropout)
+        self.pool = nn.MaxPool1d(kernel_size=2)
+        self.up1_proj = nn.Conv1d(hidden_dim * 4, hidden_dim * 2, kernel_size=1)
+        self.up1 = UNetBlock(hidden_dim * 4, hidden_dim * 2, dropout=dropout)
+        self.up2_proj = nn.Conv1d(hidden_dim * 2, hidden_dim, kernel_size=1)
+        self.up2 = UNetBlock(hidden_dim * 2, hidden_dim, dropout=dropout)
+        self.mlp = nn.Sequential(
+            nn.Linear(hidden_dim * 2, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim, output_dim),
+        )
+
+    @staticmethod
+    def _match_length(x, target):
+        if x.shape[-1] == target.shape[-1]:
+            return x
+        return nn.functional.interpolate(x, size=target.shape[-1], mode="linear", align_corners=False)
+
+    def forward(self, tokens):
+        x = tokens.transpose(1, 2)
+        skip1 = self.stem(x)
+        skip2 = self.down1(self.pool(skip1))
+        bottleneck = self.down2(self.pool(skip2))
+
+        x = nn.functional.interpolate(bottleneck, scale_factor=2, mode="linear", align_corners=False)
+        x = self._match_length(self.up1_proj(x), skip2)
+        x = self.up1(torch.cat([x, skip2], dim=1))
+
+        x = nn.functional.interpolate(x, scale_factor=2, mode="linear", align_corners=False)
+        x = self._match_length(self.up2_proj(x), skip1)
+        x = self.up2(torch.cat([x, skip1], dim=1))
+
+        pooled = torch.cat([x.mean(dim=-1), x.amax(dim=-1)], dim=-1)
+        return self.mlp(pooled)
+
+
+def build_regressor(head, token_dim, pooled_dim, hidden_dim, dropout, output_dim):
+    if head == "cnn":
+        return HRCNNRegressor(token_dim, hidden_dim=hidden_dim, dropout=dropout, output_dim=output_dim)
+    if head == "lstm":
+        return HRLSTMRegressor(token_dim, hidden_dim=hidden_dim, dropout=dropout, output_dim=output_dim)
+    if head == "unet":
+        return HRUNetRegressor(token_dim, hidden_dim=hidden_dim, dropout=dropout, output_dim=output_dim)
+    if head == "mlp":
+        return HRRegressor(pooled_dim, hidden_dim=hidden_dim, dropout=dropout, output_dim=output_dim)
+    raise ValueError(f"Unsupported downstream head: {head}")
+
+
 def extract_token_features(model, x):
     if model.hparams["revin"]:
         x = x.permute(0, 2, 1)
@@ -139,7 +235,7 @@ def make_loader(data_dir, data_name, split, batch_size, num_workers, shuffle):
 
 
 def encode_for_head(encoder, data, head):
-    if head == "cnn":
+    if head in {"cnn", "lstm", "unet"}:
         return extract_token_features(encoder, data)
     return encoder(data, latent_mode=True)
 
@@ -190,29 +286,58 @@ def train(args):
     encoder = model_class(in_channel=1, length=args.length, n_classes=args.output_dim, hparams=model_hparams).to(device)
     load_report = load_compatible_weights(encoder, args.checkpoint, device)
 
+    if args.chase_style:
+        args.freeze_encoder = False
+        if args.loss == "mse":
+            args.loss = "smooth_l1"
+        if args.optimizer == "adam":
+            args.optimizer = "adamw"
+
     if args.freeze_encoder:
         for param in encoder.parameters():
             param.requires_grad = False
+    elif args.unfreeze_last_n > 0:
+        for param in encoder.parameters():
+            param.requires_grad = False
+        for module_name in ("encoder", "masked_encoder"):
+            module = getattr(encoder, module_name, None)
+            layers = getattr(module, "layers", None)
+            if layers is None:
+                continue
+            for layer in layers[-args.unfreeze_last_n :]:
+                for param in layer.parameters():
+                    param.requires_grad = True
 
-    if args.head == "cnn":
-        regressor = HRCNNRegressor(
-            model_hparams["dim"],
-            hidden_dim=args.hidden_dim,
-            dropout=args.dropout,
-            output_dim=args.output_dim,
-        ).to(device)
+    regressor = build_regressor(
+        args.head,
+        token_dim=model_hparams["dim"],
+        pooled_dim=encoder.linear_clf_dim,
+        hidden_dim=args.hidden_dim,
+        dropout=args.dropout,
+        output_dim=args.output_dim,
+    ).to(device)
+    trainable_encoder_params = [param for param in encoder.parameters() if param.requires_grad]
+    head_params = list(regressor.parameters())
+    param_groups = [{"params": head_params, "lr": args.lr, "weight_decay": args.weight_decay}]
+    if trainable_encoder_params:
+        param_groups.insert(
+            0,
+            {
+                "params": trainable_encoder_params,
+                "lr": args.encoder_lr,
+                "weight_decay": args.weight_decay,
+            },
+        )
+
+    optimizer_class = torch.optim.AdamW if args.optimizer == "adamw" else torch.optim.Adam
+    optimizer = optimizer_class(param_groups)
+    if args.loss == "smooth_l1":
+        criterion = nn.SmoothL1Loss()
     else:
-        regressor = HRRegressor(
-            encoder.linear_clf_dim,
-            hidden_dim=args.hidden_dim,
-            dropout=args.dropout,
-            output_dim=args.output_dim,
-        ).to(device)
-    params = list(regressor.parameters())
-    if not args.freeze_encoder:
-        params += list(encoder.parameters())
-    optimizer = torch.optim.Adam(params, lr=args.lr, weight_decay=args.weight_decay)
-    criterion = nn.MSELoss()
+        criterion = nn.MSELoss()
+    scheduler = None
+    if args.cosine_lr:
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.epochs, eta_min=args.min_lr)
 
     train_labels = train_loader.dataset.label.float()
     label_mean = train_labels.mean().to(device)
@@ -239,8 +364,16 @@ def train(args):
 
             optimizer.zero_grad()
             loss.backward()
+            if args.grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(
+                    list(regressor.parameters()) + trainable_encoder_params,
+                    max_norm=args.grad_clip,
+                )
             optimizer.step()
             losses.append(float(loss.detach().cpu()))
+
+        if scheduler is not None:
+            scheduler.step()
 
         val_metrics = evaluate(encoder, regressor, val_loader, device, label_mean, label_std, args.head)
         train_loss = sum(losses) / max(len(losses), 1)
@@ -298,10 +431,18 @@ def main():
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--epochs", type=int, default=30)
     parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--encoder_lr", type=float, default=1e-4)
+    parser.add_argument("--min_lr", type=float, default=1e-6)
     parser.add_argument("--weight_decay", type=float, default=1e-4)
     parser.add_argument("--hidden_dim", type=int, default=64)
     parser.add_argument("--dropout", type=float, default=0.2)
-    parser.add_argument("--head", choices=["cnn", "mlp"], default="cnn")
+    parser.add_argument("--head", choices=["cnn", "lstm", "unet", "mlp"], default="cnn")
+    parser.add_argument("--loss", choices=["mse", "smooth_l1"], default="mse")
+    parser.add_argument("--optimizer", choices=["adam", "adamw"], default="adam")
+    parser.add_argument("--grad_clip", type=float, default=0.0)
+    parser.add_argument("--unfreeze_last_n", type=int, default=0)
+    parser.add_argument("--cosine_lr", action="store_true")
+    parser.add_argument("--chase_style", action="store_true")
     parser.add_argument("--freeze_encoder", action="store_true")
     args = parser.parse_args()
     train(args)
