@@ -65,7 +65,8 @@ def evaluate_fold(fold_dir, checkpoint, device, batch_size):
     if len(rows) != len(data["samples"]):
         raise ValueError(f"Metadata/sample mismatch for {fold_dir}: {len(rows)} vs {len(data['samples'])}")
 
-    encoder, regressor, label_mean, label_std, head, _description = load_model(checkpoint, device)
+    loaded = load_model(checkpoint, device)
+    encoder, regressor, label_mean, label_std, head = loaded[:5]
     preds = predict(encoder, regressor, data["samples"], label_mean, label_std, head, device, batch_size)
     targets = data["labels"].float()
 
