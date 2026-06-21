@@ -14,6 +14,8 @@ from report_wrist_hrv import (
 
 def summarize(rows):
     keys = ("hr_mae", "hr_rmse", "l1_lt_2", "l1_lt_5", "l1_lt_10pct", "rmssd", "sdnn")
+    if any("pnn50" in row for row in rows):
+        keys = (*keys, "pnn50")
     summary = {}
     for key in keys:
         values = torch.tensor([row[key] for row in rows], dtype=torch.float32)
@@ -24,17 +26,20 @@ def summarize(rows):
 
 
 def print_summary(title, summary):
+    has_pnn50 = any("pnn50_mean" in row for row in summary.values())
     print("=" * 110)
     print(title)
     print("Metrics are fold-wise mean+-std across 5 folds")
     print("HR: L1 regression metrics | HRV: within 5% of pooled GT range")
     print("=" * 110)
-    print(f"{'Dataset':<16}{'HR MAE+STD':>16}{'RMSE':>10}{'L1<2':>10}{'L1<5':>10}{'L1<10%r':>12}{'RMSSD':>10}{'SDNN':>10}{'N':>8}")
+    pnn50_header = f"{'pNN50':>10}" if has_pnn50 else ""
+    print(f"{'Dataset':<16}{'HR MAE+STD':>16}{'RMSE':>10}{'L1<2':>10}{'L1<5':>10}{'L1<10%r':>12}{'RMSSD':>10}{'SDNN':>10}{pnn50_header}{'N':>8}")
     print("-" * 110)
     for name in ("Gesture", "Static", "Free Form"):
         if name not in summary:
             continue
         row = summary[name]
+        pnn50_value = f"{row['pnn50_mean']:>9.2f}%" if has_pnn50 else ""
         print(
             f"{name:<16}"
             f"{row['hr_mae_mean']:>8.2f}+{row['hr_mae_std']:<6.2f}"
@@ -44,6 +49,7 @@ def print_summary(title, summary):
             f"{row['l1_lt_10pct_mean']:>11.2f}%"
             f"{row['rmssd_mean']:>9.2f}%"
             f"{row['sdnn_mean']:>9.2f}%"
+            f"{pnn50_value}"
             f"{row['n']:>8d}"
         )
     print("-" * 110)
@@ -59,7 +65,7 @@ def evaluate_fold(fold_dir, checkpoint, device, batch_size):
     if len(rows) != len(data["samples"]):
         raise ValueError(f"Metadata/sample mismatch for {fold_dir}: {len(rows)} vs {len(data['samples'])}")
 
-    encoder, regressor, label_mean, label_std, head = load_model(checkpoint, device)
+    encoder, regressor, label_mean, label_std, head, _description = load_model(checkpoint, device)
     preds = predict(encoder, regressor, data["samples"], label_mean, label_std, head, device, batch_size)
     targets = data["labels"].float()
 
