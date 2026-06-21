@@ -14,6 +14,7 @@ import torch
 
 SITES = ("LA_A", "LA_V3", "LA_V5")
 SPLITS = ("training", "testing")
+REFERENCE_LEADS = ("I", "II", "III", "aVR", "aVL", "aVF", "V1", "V2", "V3", "V4", "V5", "V6")
 
 
 def zscore_channels(x):
@@ -107,6 +108,12 @@ def convert(args):
                         data = np.asarray(split_obj.wECG, dtype=np.float32)
                         if data.ndim != 2 or data.shape[1] != 2:
                             continue
+                        if args.label_source == "reference_12_lead":
+                            label_data = np.asarray(split_obj.reference_12_lead, dtype=np.float32)
+                            if label_data.ndim != 2 or label_data.shape[1] != len(REFERENCE_LEADS):
+                                continue
+                        else:
+                            label_data = data
                         counts["recordings_available"] += 1
 
                         for start in range(0, data.shape[0] - args.window_size + 1, args.stride):
@@ -114,7 +121,7 @@ def convert(args):
                             counts["windows_total"] += 1
                             window_tc = data[start:stop]
                             label = label_from_window(
-                                window_tc[:, args.label_channel],
+                                label_data[start:stop, args.label_channel],
                                 fs,
                                 args.min_rr,
                                 args.max_rr,
@@ -130,10 +137,16 @@ def convert(args):
                             metadata["windows"].append(
                                 {
                                     "file": mat_name,
+                                    "subject": Path(mat_name).stem,
                                     "site": site,
                                     "recording_split": recording_split,
                                     "split": split_name,
-                                    "dataset": "wECGdb Wrist",
+                                    "dataset": args.dataset_name,
+                                    "label_source": args.label_source,
+                                    "label_channel": args.label_channel,
+                                    "label_lead": REFERENCE_LEADS[args.label_channel]
+                                    if args.label_source == "reference_12_lead"
+                                    else f"wECG_ch{args.label_channel}",
                                     "start": start,
                                     "stop": stop,
                                     "hr_bpm": label[0],
@@ -165,7 +178,9 @@ def main():
     parser.add_argument("--output_dir", default="ml-famae/data_wecg_wrist_hrv_5000")
     parser.add_argument("--window_size", type=int, default=5000)
     parser.add_argument("--stride", type=int, default=500)
+    parser.add_argument("--label_source", choices=["wecg", "reference_12_lead"], default="wecg")
     parser.add_argument("--label_channel", type=int, default=0)
+    parser.add_argument("--dataset_name", default="wECGdb Wrist")
     parser.add_argument("--min_rr", type=float, default=0.30)
     parser.add_argument("--max_rr", type=float, default=2.00)
     parser.add_argument("--val_ratio", type=float, default=0.1)

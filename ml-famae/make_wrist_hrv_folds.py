@@ -19,6 +19,19 @@ def file_key(row):
     return row["file"]
 
 
+def window_key(row):
+    return "|".join(
+        str(row.get(key, ""))
+        for key in ("file", "site", "recording_split", "start", "stop")
+    )
+
+
+def split_key(row, fold_unit):
+    if fold_unit == "window":
+        return window_key(row)
+    return file_key(row)
+
+
 def subject_key(row):
     return row.get("subject") or Path(row["file"]).parent.name
 
@@ -43,10 +56,10 @@ def load_base_dataset(data_dir):
     return torch.cat(samples), torch.cat(labels), rows, metadata
 
 
-def make_file_folds(rows, n_folds, seed):
+def make_file_folds(rows, n_folds, seed, fold_unit):
     files_by_activity = defaultdict(list)
     for row in rows:
-        files_by_activity[activity_from_file(row["file"])].append(file_key(row))
+        files_by_activity[activity_from_file(row["file"])].append(split_key(row, fold_unit))
 
     folds = [[] for _ in range(n_folds)]
     rng = random.Random(seed)
@@ -58,11 +71,11 @@ def make_file_folds(rows, n_folds, seed):
     return [set(fold) for fold in folds]
 
 
-def make_intra_subject_file_folds(rows, n_folds, seed):
+def make_intra_subject_file_folds(rows, n_folds, seed, fold_unit):
     files_by_subject_activity = defaultdict(list)
     for row in rows:
         group = (subject_key(row), activity_from_file(row["file"]))
-        files_by_subject_activity[group].append(file_key(row))
+        files_by_subject_activity[group].append(split_key(row, fold_unit))
 
     folds = [[] for _ in range(n_folds)]
     rng = random.Random(seed)
@@ -74,13 +87,13 @@ def make_intra_subject_file_folds(rows, n_folds, seed):
     return [set(fold) for fold in folds]
 
 
-def make_validation_files(trainval_files, rows, val_ratio, seed, fold_idx):
+def make_validation_files(trainval_files, rows, val_ratio, seed, fold_idx, fold_unit):
     if val_ratio <= 0:
         return set()
 
     files_by_subject_activity = defaultdict(list)
     for row in rows:
-        key = file_key(row)
+        key = split_key(row, fold_unit)
         if key not in trainval_files:
             continue
         group = (subject_key(row), activity_from_file(row["file"]))
@@ -113,6 +126,7 @@ def main():
     parser.add_argument("--output_root", default="./data_our_wrist_hrv_3000_5fold")
     parser.add_argument("--n_folds", type=int, default=5)
     parser.add_argument("--split_mode", choices=["legacy_activity", "intra_subject"], default="legacy_activity")
+    parser.add_argument("--fold_unit", choices=["file", "window"], default="file")
     parser.add_argument("--val_ratio_of_trainval", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
@@ -121,14 +135,14 @@ def main():
     output_root = Path(args.output_root)
     output_root.mkdir(parents=True, exist_ok=True)
     if args.split_mode == "intra_subject":
-        folds = make_intra_subject_file_folds(rows, args.n_folds, args.seed)
+        folds = make_intra_subject_file_folds(rows, args.n_folds, args.seed, args.fold_unit)
     else:
-        folds = make_file_folds(rows, args.n_folds, args.seed)
+        folds = make_file_folds(rows, args.n_folds, args.seed, args.fold_unit)
 
     for fold_idx, test_files in enumerate(folds):
         if args.split_mode == "intra_subject":
             trainval_files = set().union(*[fold for i, fold in enumerate(folds) if i != fold_idx])
-            val_files = make_validation_files(trainval_files, rows, args.val_ratio_of_trainval, args.seed, fold_idx)
+            val_files = make_validation_files(trainval_files, rows, args.val_ratio_of_trainval, args.seed, fold_idx, args.fold_unit)
             train_files = trainval_files - val_files
         else:
             val_files = folds[(fold_idx + 1) % args.n_folds]
@@ -139,7 +153,7 @@ def main():
         split_indices = {"train": [], "val": [], "test": []}
         split_rows = {"train": [], "val": [], "test": []}
         for index, row in enumerate(rows):
-            key = file_key(row)
+            key = split_key(row, args.fold_unit)
             if key in test_files:
                 split = "test"
             elif key in val_files:
@@ -166,6 +180,7 @@ def main():
             "n_folds": args.n_folds,
             "seed": args.seed,
             "split_mode": args.split_mode,
+            "fold_unit": args.fold_unit,
             "cv_protocol": "intra-subject 5-fold; each subject contributes approximately 20% files to test per fold" if args.split_mode == "intra_subject" else "legacy activity-stratified file fold",
             "val_ratio_of_trainval": args.val_ratio_of_trainval if args.split_mode == "intra_subject" else None,
             "windows": split_rows["train"] + split_rows["val"] + split_rows["test"],
