@@ -1,0 +1,709 @@
+nohup: ignoring input
+================================================================================
+Training task1-12lead5000-to-our-wrist1ch | head=unet | fold=0
+Checkpoint: ./model_ckpt/wecg-12lead-5000-pretrain-300ep-bs4_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3513, 1, 5000]) torch.Size([3513, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([818, 1, 5000]) torch.Size([818, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1197, 1, 5000]) torch.Size([1197, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 149
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2152 val_hr_bpm_mae=22.52 val_sdnn_ms_mae=30.32 val_rmssd_ms_mae=31.86 val_pnn50_pct_mae=24.66
+epoch 002 train_loss=0.2050 val_hr_bpm_mae=18.27 val_sdnn_ms_mae=32.07 val_rmssd_ms_mae=32.05 val_pnn50_pct_mae=23.33
+epoch 003 train_loss=0.1891 val_hr_bpm_mae=8.00 val_sdnn_ms_mae=28.09 val_rmssd_ms_mae=31.28 val_pnn50_pct_mae=19.12
+epoch 004 train_loss=0.1265 val_hr_bpm_mae=7.27 val_sdnn_ms_mae=26.04 val_rmssd_ms_mae=25.73 val_pnn50_pct_mae=14.74
+epoch 005 train_loss=0.1022 val_hr_bpm_mae=7.36 val_sdnn_ms_mae=31.01 val_rmssd_ms_mae=32.63 val_pnn50_pct_mae=15.79
+epoch 006 train_loss=0.0920 val_hr_bpm_mae=6.75 val_sdnn_ms_mae=22.20 val_rmssd_ms_mae=25.13 val_pnn50_pct_mae=14.10
+epoch 007 train_loss=0.0772 val_hr_bpm_mae=5.45 val_sdnn_ms_mae=21.46 val_rmssd_ms_mae=23.66 val_pnn50_pct_mae=13.58
+epoch 008 train_loss=0.0726 val_hr_bpm_mae=6.71 val_sdnn_ms_mae=28.54 val_rmssd_ms_mae=32.60 val_pnn50_pct_mae=15.34
+epoch 009 train_loss=0.0716 val_hr_bpm_mae=4.99 val_sdnn_ms_mae=22.98 val_rmssd_ms_mae=25.98 val_pnn50_pct_mae=12.80
+epoch 010 train_loss=0.0627 val_hr_bpm_mae=4.73 val_sdnn_ms_mae=22.12 val_rmssd_ms_mae=23.50 val_pnn50_pct_mae=13.08
+epoch 011 train_loss=0.0601 val_hr_bpm_mae=6.28 val_sdnn_ms_mae=22.80 val_rmssd_ms_mae=23.66 val_pnn50_pct_mae=14.47
+epoch 012 train_loss=0.0508 val_hr_bpm_mae=4.70 val_sdnn_ms_mae=21.67 val_rmssd_ms_mae=24.14 val_pnn50_pct_mae=12.93
+epoch 013 train_loss=0.0475 val_hr_bpm_mae=5.16 val_sdnn_ms_mae=22.24 val_rmssd_ms_mae=25.26 val_pnn50_pct_mae=14.00
+epoch 014 train_loss=0.0434 val_hr_bpm_mae=4.47 val_sdnn_ms_mae=21.30 val_rmssd_ms_mae=23.77 val_pnn50_pct_mae=12.60
+epoch 015 train_loss=0.0397 val_hr_bpm_mae=4.38 val_sdnn_ms_mae=21.02 val_rmssd_ms_mae=23.44 val_pnn50_pct_mae=12.29
+epoch 016 train_loss=0.0378 val_hr_bpm_mae=4.09 val_sdnn_ms_mae=20.35 val_rmssd_ms_mae=23.04 val_pnn50_pct_mae=12.86
+epoch 017 train_loss=0.0349 val_hr_bpm_mae=4.04 val_sdnn_ms_mae=20.71 val_rmssd_ms_mae=23.26 val_pnn50_pct_mae=12.35
+epoch 018 train_loss=0.0338 val_hr_bpm_mae=4.37 val_sdnn_ms_mae=21.73 val_rmssd_ms_mae=23.79 val_pnn50_pct_mae=13.12
+epoch 019 train_loss=0.0320 val_hr_bpm_mae=4.06 val_sdnn_ms_mae=21.10 val_rmssd_ms_mae=23.30 val_pnn50_pct_mae=13.17
+epoch 020 train_loss=0.0309 val_hr_bpm_mae=4.00 val_sdnn_ms_mae=20.51 val_rmssd_ms_mae=22.60 val_pnn50_pct_mae=12.63
+epoch 021 train_loss=0.0275 val_hr_bpm_mae=3.72 val_sdnn_ms_mae=20.19 val_rmssd_ms_mae=23.06 val_pnn50_pct_mae=11.99
+epoch 022 train_loss=0.0264 val_hr_bpm_mae=3.68 val_sdnn_ms_mae=20.30 val_rmssd_ms_mae=23.05 val_pnn50_pct_mae=12.28
+epoch 023 train_loss=0.0254 val_hr_bpm_mae=3.88 val_sdnn_ms_mae=20.67 val_rmssd_ms_mae=22.75 val_pnn50_pct_mae=12.52
+epoch 024 train_loss=0.0247 val_hr_bpm_mae=3.68 val_sdnn_ms_mae=20.61 val_rmssd_ms_mae=22.86 val_pnn50_pct_mae=12.81
+epoch 025 train_loss=0.0239 val_hr_bpm_mae=3.68 val_sdnn_ms_mae=20.55 val_rmssd_ms_mae=23.17 val_pnn50_pct_mae=12.50
+epoch 026 train_loss=0.0223 val_hr_bpm_mae=3.74 val_sdnn_ms_mae=20.20 val_rmssd_ms_mae=22.39 val_pnn50_pct_mae=12.02
+epoch 027 train_loss=0.0239 val_hr_bpm_mae=3.70 val_sdnn_ms_mae=20.21 val_rmssd_ms_mae=22.61 val_pnn50_pct_mae=12.27
+epoch 028 train_loss=0.0222 val_hr_bpm_mae=3.60 val_sdnn_ms_mae=20.13 val_rmssd_ms_mae=22.66 val_pnn50_pct_mae=12.36
+epoch 029 train_loss=0.0221 val_hr_bpm_mae=3.58 val_sdnn_ms_mae=20.45 val_rmssd_ms_mae=22.91 val_pnn50_pct_mae=12.69
+epoch 030 train_loss=0.0206 val_hr_bpm_mae=3.62 val_sdnn_ms_mae=20.14 val_rmssd_ms_mae=22.64 val_pnn50_pct_mae=12.34
+test_hr_bpm_mae=3.46 test_sdnn_ms_mae=16.90 test_rmssd_ms_mae=18.11 test_pnn50_pct_mae=9.33
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task1-12lead5000-to-our-wrist1ch/unet/fold_0/best.pt
+================================================================================
+Training task1-12lead5000-to-our-wrist1ch | head=unet | fold=1
+Checkpoint: ./model_ckpt/wecg-12lead-5000-pretrain-300ep-bs4_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3465, 1, 5000]) torch.Size([3465, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([891, 1, 5000]) torch.Size([891, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1172, 1, 5000]) torch.Size([1172, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 149
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2239 val_hr_bpm_mae=18.60 val_sdnn_ms_mae=19.79 val_rmssd_ms_mae=29.25 val_pnn50_pct_mae=22.12
+epoch 002 train_loss=0.2087 val_hr_bpm_mae=8.62 val_sdnn_ms_mae=21.07 val_rmssd_ms_mae=22.18 val_pnn50_pct_mae=16.57
+epoch 003 train_loss=0.1627 val_hr_bpm_mae=9.39 val_sdnn_ms_mae=26.63 val_rmssd_ms_mae=26.15 val_pnn50_pct_mae=17.19
+epoch 004 train_loss=0.1194 val_hr_bpm_mae=7.19 val_sdnn_ms_mae=27.78 val_rmssd_ms_mae=25.08 val_pnn50_pct_mae=22.32
+epoch 005 train_loss=0.1073 val_hr_bpm_mae=10.60 val_sdnn_ms_mae=31.50 val_rmssd_ms_mae=28.25 val_pnn50_pct_mae=13.60
+epoch 006 train_loss=0.0949 val_hr_bpm_mae=5.78 val_sdnn_ms_mae=18.32 val_rmssd_ms_mae=15.33 val_pnn50_pct_mae=11.86
+epoch 007 train_loss=0.0851 val_hr_bpm_mae=5.22 val_sdnn_ms_mae=29.07 val_rmssd_ms_mae=37.46 val_pnn50_pct_mae=21.41
+epoch 008 train_loss=0.0797 val_hr_bpm_mae=4.67 val_sdnn_ms_mae=21.63 val_rmssd_ms_mae=16.14 val_pnn50_pct_mae=12.18
+epoch 009 train_loss=0.0697 val_hr_bpm_mae=6.30 val_sdnn_ms_mae=17.14 val_rmssd_ms_mae=15.08 val_pnn50_pct_mae=11.71
+epoch 010 train_loss=0.0652 val_hr_bpm_mae=3.91 val_sdnn_ms_mae=18.67 val_rmssd_ms_mae=18.80 val_pnn50_pct_mae=13.10
+epoch 011 train_loss=0.0610 val_hr_bpm_mae=6.08 val_sdnn_ms_mae=16.51 val_rmssd_ms_mae=18.11 val_pnn50_pct_mae=14.19
+epoch 012 train_loss=0.0596 val_hr_bpm_mae=3.91 val_sdnn_ms_mae=18.61 val_rmssd_ms_mae=18.00 val_pnn50_pct_mae=12.64
+epoch 013 train_loss=0.0531 val_hr_bpm_mae=3.66 val_sdnn_ms_mae=15.89 val_rmssd_ms_mae=14.68 val_pnn50_pct_mae=10.25
+epoch 014 train_loss=0.0499 val_hr_bpm_mae=4.27 val_sdnn_ms_mae=17.29 val_rmssd_ms_mae=18.41 val_pnn50_pct_mae=13.15
+epoch 015 train_loss=0.0466 val_hr_bpm_mae=3.44 val_sdnn_ms_mae=16.84 val_rmssd_ms_mae=15.68 val_pnn50_pct_mae=11.35
+epoch 016 train_loss=0.0440 val_hr_bpm_mae=3.85 val_sdnn_ms_mae=16.67 val_rmssd_ms_mae=16.84 val_pnn50_pct_mae=11.98
+epoch 017 train_loss=0.0430 val_hr_bpm_mae=4.37 val_sdnn_ms_mae=15.32 val_rmssd_ms_mae=13.54 val_pnn50_pct_mae=10.46
+epoch 018 train_loss=0.0403 val_hr_bpm_mae=3.46 val_sdnn_ms_mae=15.95 val_rmssd_ms_mae=14.69 val_pnn50_pct_mae=10.05
+epoch 019 train_loss=0.0358 val_hr_bpm_mae=3.40 val_sdnn_ms_mae=15.13 val_rmssd_ms_mae=14.84 val_pnn50_pct_mae=10.58
+epoch 020 train_loss=0.0345 val_hr_bpm_mae=3.63 val_sdnn_ms_mae=15.77 val_rmssd_ms_mae=14.82 val_pnn50_pct_mae=10.78
+epoch 021 train_loss=0.0318 val_hr_bpm_mae=3.64 val_sdnn_ms_mae=16.02 val_rmssd_ms_mae=15.39 val_pnn50_pct_mae=10.80
+epoch 022 train_loss=0.0303 val_hr_bpm_mae=3.35 val_sdnn_ms_mae=15.36 val_rmssd_ms_mae=13.75 val_pnn50_pct_mae=10.04
+epoch 023 train_loss=0.0301 val_hr_bpm_mae=3.40 val_sdnn_ms_mae=15.48 val_rmssd_ms_mae=14.16 val_pnn50_pct_mae=10.20
+epoch 024 train_loss=0.0275 val_hr_bpm_mae=3.30 val_sdnn_ms_mae=15.81 val_rmssd_ms_mae=15.08 val_pnn50_pct_mae=10.52
+epoch 025 train_loss=0.0255 val_hr_bpm_mae=3.31 val_sdnn_ms_mae=15.46 val_rmssd_ms_mae=14.38 val_pnn50_pct_mae=10.15
+epoch 026 train_loss=0.0251 val_hr_bpm_mae=3.24 val_sdnn_ms_mae=15.75 val_rmssd_ms_mae=14.76 val_pnn50_pct_mae=10.30
+epoch 027 train_loss=0.0245 val_hr_bpm_mae=3.26 val_sdnn_ms_mae=15.32 val_rmssd_ms_mae=14.22 val_pnn50_pct_mae=10.01
+epoch 028 train_loss=0.0247 val_hr_bpm_mae=3.34 val_sdnn_ms_mae=15.59 val_rmssd_ms_mae=14.45 val_pnn50_pct_mae=10.26
+epoch 029 train_loss=0.0240 val_hr_bpm_mae=3.27 val_sdnn_ms_mae=15.45 val_rmssd_ms_mae=14.39 val_pnn50_pct_mae=10.10
+epoch 030 train_loss=0.0240 val_hr_bpm_mae=3.29 val_sdnn_ms_mae=15.33 val_rmssd_ms_mae=13.99 val_pnn50_pct_mae=9.98
+test_hr_bpm_mae=3.30 test_sdnn_ms_mae=16.89 test_rmssd_ms_mae=16.94 test_pnn50_pct_mae=11.23
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task1-12lead5000-to-our-wrist1ch/unet/fold_1/best.pt
+================================================================================
+Training task1-12lead5000-to-our-wrist1ch | head=unet | fold=2
+Checkpoint: ./model_ckpt/wecg-12lead-5000-pretrain-300ep-bs4_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3512, 1, 5000]) torch.Size([3512, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([863, 1, 5000]) torch.Size([863, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1153, 1, 5000]) torch.Size([1153, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 149
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2429 val_hr_bpm_mae=18.25 val_sdnn_ms_mae=33.25 val_rmssd_ms_mae=26.49 val_pnn50_pct_mae=33.39
+epoch 002 train_loss=0.2272 val_hr_bpm_mae=8.47 val_sdnn_ms_mae=21.74 val_rmssd_ms_mae=19.97 val_pnn50_pct_mae=15.39
+epoch 003 train_loss=0.1891 val_hr_bpm_mae=9.36 val_sdnn_ms_mae=50.98 val_rmssd_ms_mae=63.34 val_pnn50_pct_mae=27.79
+epoch 004 train_loss=0.1402 val_hr_bpm_mae=6.25 val_sdnn_ms_mae=18.81 val_rmssd_ms_mae=14.52 val_pnn50_pct_mae=11.93
+epoch 005 train_loss=0.1213 val_hr_bpm_mae=4.89 val_sdnn_ms_mae=17.37 val_rmssd_ms_mae=14.74 val_pnn50_pct_mae=10.72
+epoch 006 train_loss=0.1087 val_hr_bpm_mae=5.54 val_sdnn_ms_mae=26.02 val_rmssd_ms_mae=28.91 val_pnn50_pct_mae=14.96
+epoch 007 train_loss=0.0964 val_hr_bpm_mae=4.72 val_sdnn_ms_mae=20.66 val_rmssd_ms_mae=21.53 val_pnn50_pct_mae=13.64
+epoch 008 train_loss=0.0872 val_hr_bpm_mae=5.18 val_sdnn_ms_mae=26.20 val_rmssd_ms_mae=26.72 val_pnn50_pct_mae=17.75
+epoch 009 train_loss=0.0821 val_hr_bpm_mae=4.42 val_sdnn_ms_mae=17.46 val_rmssd_ms_mae=15.34 val_pnn50_pct_mae=9.96
+epoch 010 train_loss=0.0695 val_hr_bpm_mae=4.07 val_sdnn_ms_mae=15.58 val_rmssd_ms_mae=12.04 val_pnn50_pct_mae=8.87
+epoch 011 train_loss=0.0648 val_hr_bpm_mae=3.69 val_sdnn_ms_mae=16.03 val_rmssd_ms_mae=14.85 val_pnn50_pct_mae=9.94
+epoch 012 train_loss=0.0586 val_hr_bpm_mae=3.81 val_sdnn_ms_mae=20.32 val_rmssd_ms_mae=20.21 val_pnn50_pct_mae=11.33
+epoch 013 train_loss=0.0507 val_hr_bpm_mae=3.75 val_sdnn_ms_mae=16.96 val_rmssd_ms_mae=16.74 val_pnn50_pct_mae=11.00
+epoch 014 train_loss=0.0499 val_hr_bpm_mae=4.19 val_sdnn_ms_mae=17.66 val_rmssd_ms_mae=18.11 val_pnn50_pct_mae=10.94
+epoch 015 train_loss=0.0454 val_hr_bpm_mae=3.26 val_sdnn_ms_mae=15.92 val_rmssd_ms_mae=14.86 val_pnn50_pct_mae=9.49
+epoch 016 train_loss=0.0401 val_hr_bpm_mae=3.08 val_sdnn_ms_mae=14.93 val_rmssd_ms_mae=12.34 val_pnn50_pct_mae=8.74
+epoch 017 train_loss=0.0402 val_hr_bpm_mae=3.19 val_sdnn_ms_mae=15.30 val_rmssd_ms_mae=13.70 val_pnn50_pct_mae=9.19
+epoch 018 train_loss=0.0360 val_hr_bpm_mae=2.98 val_sdnn_ms_mae=15.22 val_rmssd_ms_mae=13.40 val_pnn50_pct_mae=9.39
+epoch 019 train_loss=0.0343 val_hr_bpm_mae=2.89 val_sdnn_ms_mae=14.97 val_rmssd_ms_mae=13.26 val_pnn50_pct_mae=9.02
+epoch 020 train_loss=0.0319 val_hr_bpm_mae=2.85 val_sdnn_ms_mae=15.30 val_rmssd_ms_mae=13.27 val_pnn50_pct_mae=9.28
+epoch 021 train_loss=0.0310 val_hr_bpm_mae=2.74 val_sdnn_ms_mae=14.67 val_rmssd_ms_mae=12.67 val_pnn50_pct_mae=8.81
+epoch 022 train_loss=0.0291 val_hr_bpm_mae=2.68 val_sdnn_ms_mae=14.39 val_rmssd_ms_mae=12.34 val_pnn50_pct_mae=9.08
+epoch 023 train_loss=0.0305 val_hr_bpm_mae=2.63 val_sdnn_ms_mae=15.24 val_rmssd_ms_mae=13.49 val_pnn50_pct_mae=9.41
+epoch 024 train_loss=0.0270 val_hr_bpm_mae=2.57 val_sdnn_ms_mae=14.53 val_rmssd_ms_mae=12.29 val_pnn50_pct_mae=8.34
+epoch 025 train_loss=0.0262 val_hr_bpm_mae=2.53 val_sdnn_ms_mae=14.97 val_rmssd_ms_mae=12.93 val_pnn50_pct_mae=8.99
+epoch 026 train_loss=0.0248 val_hr_bpm_mae=2.54 val_sdnn_ms_mae=15.19 val_rmssd_ms_mae=13.79 val_pnn50_pct_mae=9.50
+epoch 027 train_loss=0.0259 val_hr_bpm_mae=2.45 val_sdnn_ms_mae=15.16 val_rmssd_ms_mae=13.27 val_pnn50_pct_mae=8.99
+epoch 028 train_loss=0.0249 val_hr_bpm_mae=2.47 val_sdnn_ms_mae=15.29 val_rmssd_ms_mae=13.51 val_pnn50_pct_mae=9.09
+epoch 029 train_loss=0.0252 val_hr_bpm_mae=2.47 val_sdnn_ms_mae=15.02 val_rmssd_ms_mae=13.13 val_pnn50_pct_mae=8.93
+epoch 030 train_loss=0.0233 val_hr_bpm_mae=2.48 val_sdnn_ms_mae=15.22 val_rmssd_ms_mae=13.46 val_pnn50_pct_mae=9.03
+test_hr_bpm_mae=2.70 test_sdnn_ms_mae=14.38 test_rmssd_ms_mae=15.64 test_pnn50_pct_mae=9.75
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task1-12lead5000-to-our-wrist1ch/unet/fold_2/best.pt
+================================================================================
+Training task1-12lead5000-to-our-wrist1ch | head=unet | fold=3
+Checkpoint: ./model_ckpt/wecg-12lead-5000-pretrain-300ep-bs4_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3589, 1, 5000]) torch.Size([3589, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([949, 1, 5000]) torch.Size([949, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([990, 1, 5000]) torch.Size([990, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 149
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2044 val_hr_bpm_mae=21.42 val_sdnn_ms_mae=26.29 val_rmssd_ms_mae=26.35 val_pnn50_pct_mae=20.91
+epoch 002 train_loss=0.1960 val_hr_bpm_mae=19.05 val_sdnn_ms_mae=24.83 val_rmssd_ms_mae=26.32 val_pnn50_pct_mae=23.15
+epoch 003 train_loss=0.1882 val_hr_bpm_mae=10.59 val_sdnn_ms_mae=25.57 val_rmssd_ms_mae=28.63 val_pnn50_pct_mae=17.49
+epoch 004 train_loss=0.1554 val_hr_bpm_mae=7.62 val_sdnn_ms_mae=20.49 val_rmssd_ms_mae=20.15 val_pnn50_pct_mae=11.85
+epoch 005 train_loss=0.1246 val_hr_bpm_mae=6.74 val_sdnn_ms_mae=20.43 val_rmssd_ms_mae=20.28 val_pnn50_pct_mae=10.85
+epoch 006 train_loss=0.1070 val_hr_bpm_mae=6.59 val_sdnn_ms_mae=26.43 val_rmssd_ms_mae=31.25 val_pnn50_pct_mae=17.53
+epoch 007 train_loss=0.0968 val_hr_bpm_mae=5.39 val_sdnn_ms_mae=18.50 val_rmssd_ms_mae=16.62 val_pnn50_pct_mae=10.06
+epoch 008 train_loss=0.0898 val_hr_bpm_mae=5.83 val_sdnn_ms_mae=20.20 val_rmssd_ms_mae=20.37 val_pnn50_pct_mae=11.82
+epoch 009 train_loss=0.0781 val_hr_bpm_mae=4.16 val_sdnn_ms_mae=18.43 val_rmssd_ms_mae=17.49 val_pnn50_pct_mae=10.36
+epoch 010 train_loss=0.0696 val_hr_bpm_mae=4.70 val_sdnn_ms_mae=19.81 val_rmssd_ms_mae=19.10 val_pnn50_pct_mae=11.23
+epoch 011 train_loss=0.0634 val_hr_bpm_mae=4.34 val_sdnn_ms_mae=20.25 val_rmssd_ms_mae=18.55 val_pnn50_pct_mae=11.33
+epoch 012 train_loss=0.0571 val_hr_bpm_mae=3.77 val_sdnn_ms_mae=20.06 val_rmssd_ms_mae=17.86 val_pnn50_pct_mae=10.75
+epoch 013 train_loss=0.0559 val_hr_bpm_mae=4.88 val_sdnn_ms_mae=19.34 val_rmssd_ms_mae=19.25 val_pnn50_pct_mae=11.51
+epoch 014 train_loss=0.0533 val_hr_bpm_mae=3.98 val_sdnn_ms_mae=19.11 val_rmssd_ms_mae=19.13 val_pnn50_pct_mae=11.41
+epoch 015 train_loss=0.0472 val_hr_bpm_mae=3.76 val_sdnn_ms_mae=19.15 val_rmssd_ms_mae=19.40 val_pnn50_pct_mae=11.53
+epoch 016 train_loss=0.0487 val_hr_bpm_mae=5.50 val_sdnn_ms_mae=18.24 val_rmssd_ms_mae=18.10 val_pnn50_pct_mae=11.52
+epoch 017 train_loss=0.0415 val_hr_bpm_mae=3.40 val_sdnn_ms_mae=17.93 val_rmssd_ms_mae=17.34 val_pnn50_pct_mae=10.34
+epoch 018 train_loss=0.0382 val_hr_bpm_mae=3.39 val_sdnn_ms_mae=17.74 val_rmssd_ms_mae=16.74 val_pnn50_pct_mae=9.79
+epoch 019 train_loss=0.0350 val_hr_bpm_mae=3.42 val_sdnn_ms_mae=19.24 val_rmssd_ms_mae=17.99 val_pnn50_pct_mae=10.31
+epoch 020 train_loss=0.0355 val_hr_bpm_mae=3.47 val_sdnn_ms_mae=17.95 val_rmssd_ms_mae=17.80 val_pnn50_pct_mae=10.43
+epoch 021 train_loss=0.0321 val_hr_bpm_mae=3.59 val_sdnn_ms_mae=18.56 val_rmssd_ms_mae=19.00 val_pnn50_pct_mae=10.85
+epoch 022 train_loss=0.0298 val_hr_bpm_mae=3.74 val_sdnn_ms_mae=17.95 val_rmssd_ms_mae=17.49 val_pnn50_pct_mae=10.00
+epoch 023 train_loss=0.0287 val_hr_bpm_mae=3.43 val_sdnn_ms_mae=18.34 val_rmssd_ms_mae=18.27 val_pnn50_pct_mae=10.34
+epoch 024 train_loss=0.0291 val_hr_bpm_mae=3.27 val_sdnn_ms_mae=18.40 val_rmssd_ms_mae=17.64 val_pnn50_pct_mae=10.00
+epoch 025 train_loss=0.0252 val_hr_bpm_mae=3.39 val_sdnn_ms_mae=18.20 val_rmssd_ms_mae=17.84 val_pnn50_pct_mae=10.06
+epoch 026 train_loss=0.0251 val_hr_bpm_mae=3.31 val_sdnn_ms_mae=18.54 val_rmssd_ms_mae=18.60 val_pnn50_pct_mae=10.38
+epoch 027 train_loss=0.0245 val_hr_bpm_mae=3.33 val_sdnn_ms_mae=18.36 val_rmssd_ms_mae=18.15 val_pnn50_pct_mae=10.13
+epoch 028 train_loss=0.0248 val_hr_bpm_mae=3.26 val_sdnn_ms_mae=18.32 val_rmssd_ms_mae=17.99 val_pnn50_pct_mae=9.98
+epoch 029 train_loss=0.0241 val_hr_bpm_mae=3.34 val_sdnn_ms_mae=18.43 val_rmssd_ms_mae=17.97 val_pnn50_pct_mae=9.89
+epoch 030 train_loss=0.0220 val_hr_bpm_mae=3.21 val_sdnn_ms_mae=18.31 val_rmssd_ms_mae=17.97 val_pnn50_pct_mae=9.95
+test_hr_bpm_mae=3.93 test_sdnn_ms_mae=19.72 test_rmssd_ms_mae=20.66 test_pnn50_pct_mae=10.79
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task1-12lead5000-to-our-wrist1ch/unet/fold_3/best.pt
+================================================================================
+Training task1-12lead5000-to-our-wrist1ch | head=unet | fold=4
+Checkpoint: ./model_ckpt/wecg-12lead-5000-pretrain-300ep-bs4_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3581, 1, 5000]) torch.Size([3581, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([931, 1, 5000]) torch.Size([931, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1016, 1, 5000]) torch.Size([1016, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 149
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.1985 val_hr_bpm_mae=31.12 val_sdnn_ms_mae=32.49 val_rmssd_ms_mae=32.67 val_pnn50_pct_mae=26.78
+epoch 002 train_loss=0.1878 val_hr_bpm_mae=40.96 val_sdnn_ms_mae=31.30 val_rmssd_ms_mae=33.64 val_pnn50_pct_mae=31.15
+epoch 003 train_loss=0.1680 val_hr_bpm_mae=8.65 val_sdnn_ms_mae=29.03 val_rmssd_ms_mae=35.56 val_pnn50_pct_mae=24.85
+epoch 004 train_loss=0.1390 val_hr_bpm_mae=6.24 val_sdnn_ms_mae=21.40 val_rmssd_ms_mae=22.57 val_pnn50_pct_mae=12.40
+epoch 005 train_loss=0.1177 val_hr_bpm_mae=8.11 val_sdnn_ms_mae=21.92 val_rmssd_ms_mae=24.25 val_pnn50_pct_mae=16.17
+epoch 006 train_loss=0.1024 val_hr_bpm_mae=7.14 val_sdnn_ms_mae=21.88 val_rmssd_ms_mae=23.27 val_pnn50_pct_mae=13.13
+epoch 007 train_loss=0.0938 val_hr_bpm_mae=7.50 val_sdnn_ms_mae=23.13 val_rmssd_ms_mae=24.16 val_pnn50_pct_mae=15.15
+epoch 008 train_loss=0.0830 val_hr_bpm_mae=6.67 val_sdnn_ms_mae=21.08 val_rmssd_ms_mae=21.61 val_pnn50_pct_mae=12.56
+epoch 009 train_loss=0.0740 val_hr_bpm_mae=6.15 val_sdnn_ms_mae=21.83 val_rmssd_ms_mae=22.50 val_pnn50_pct_mae=13.46
+epoch 010 train_loss=0.0694 val_hr_bpm_mae=7.16 val_sdnn_ms_mae=21.18 val_rmssd_ms_mae=24.30 val_pnn50_pct_mae=12.68
+epoch 011 train_loss=0.0620 val_hr_bpm_mae=6.41 val_sdnn_ms_mae=20.43 val_rmssd_ms_mae=22.67 val_pnn50_pct_mae=12.84
+epoch 012 train_loss=0.0603 val_hr_bpm_mae=6.07 val_sdnn_ms_mae=22.83 val_rmssd_ms_mae=26.01 val_pnn50_pct_mae=12.55
+epoch 013 train_loss=0.0520 val_hr_bpm_mae=5.86 val_sdnn_ms_mae=19.87 val_rmssd_ms_mae=21.35 val_pnn50_pct_mae=12.60
+epoch 014 train_loss=0.0495 val_hr_bpm_mae=4.93 val_sdnn_ms_mae=19.84 val_rmssd_ms_mae=21.55 val_pnn50_pct_mae=11.93
+epoch 015 train_loss=0.0456 val_hr_bpm_mae=4.93 val_sdnn_ms_mae=19.74 val_rmssd_ms_mae=20.30 val_pnn50_pct_mae=11.86
+epoch 016 train_loss=0.0403 val_hr_bpm_mae=5.41 val_sdnn_ms_mae=19.25 val_rmssd_ms_mae=20.99 val_pnn50_pct_mae=11.92
+epoch 017 train_loss=0.0415 val_hr_bpm_mae=4.90 val_sdnn_ms_mae=19.56 val_rmssd_ms_mae=21.14 val_pnn50_pct_mae=12.09
+epoch 018 train_loss=0.0395 val_hr_bpm_mae=4.78 val_sdnn_ms_mae=19.95 val_rmssd_ms_mae=20.88 val_pnn50_pct_mae=11.82
+epoch 019 train_loss=0.0365 val_hr_bpm_mae=4.94 val_sdnn_ms_mae=19.62 val_rmssd_ms_mae=22.37 val_pnn50_pct_mae=12.17
+epoch 020 train_loss=0.0326 val_hr_bpm_mae=4.56 val_sdnn_ms_mae=19.57 val_rmssd_ms_mae=20.72 val_pnn50_pct_mae=12.01
+epoch 021 train_loss=0.0305 val_hr_bpm_mae=4.99 val_sdnn_ms_mae=18.82 val_rmssd_ms_mae=20.27 val_pnn50_pct_mae=11.44
+epoch 022 train_loss=0.0302 val_hr_bpm_mae=4.77 val_sdnn_ms_mae=19.05 val_rmssd_ms_mae=21.15 val_pnn50_pct_mae=11.64
+epoch 023 train_loss=0.0280 val_hr_bpm_mae=4.60 val_sdnn_ms_mae=18.90 val_rmssd_ms_mae=20.16 val_pnn50_pct_mae=11.43
+epoch 024 train_loss=0.0274 val_hr_bpm_mae=4.77 val_sdnn_ms_mae=18.70 val_rmssd_ms_mae=20.05 val_pnn50_pct_mae=11.41
+epoch 025 train_loss=0.0262 val_hr_bpm_mae=4.68 val_sdnn_ms_mae=18.95 val_rmssd_ms_mae=19.89 val_pnn50_pct_mae=11.38
+epoch 026 train_loss=0.0257 val_hr_bpm_mae=4.57 val_sdnn_ms_mae=19.18 val_rmssd_ms_mae=19.95 val_pnn50_pct_mae=11.41
+epoch 027 train_loss=0.0256 val_hr_bpm_mae=4.61 val_sdnn_ms_mae=19.10 val_rmssd_ms_mae=19.98 val_pnn50_pct_mae=11.30
+epoch 028 train_loss=0.0242 val_hr_bpm_mae=4.50 val_sdnn_ms_mae=19.03 val_rmssd_ms_mae=19.96 val_pnn50_pct_mae=11.33
+epoch 029 train_loss=0.0243 val_hr_bpm_mae=4.48 val_sdnn_ms_mae=18.95 val_rmssd_ms_mae=20.13 val_pnn50_pct_mae=11.39
+epoch 030 train_loss=0.0249 val_hr_bpm_mae=4.50 val_sdnn_ms_mae=18.98 val_rmssd_ms_mae=20.04 val_pnn50_pct_mae=11.38
+test_hr_bpm_mae=3.42 test_sdnn_ms_mae=17.83 test_rmssd_ms_mae=18.16 test_pnn50_pct_mae=11.15
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task1-12lead5000-to-our-wrist1ch/unet/fold_4/best.pt
+==============================================================================================================
+FINAL RESULTS - 5-FOLD WRIST ECG HR/HRV REGRESSION
+Metrics are fold-wise mean+-std across 5 folds
+HR: L1 regression metrics | HRV: within 5% of pooled GT range
+==============================================================================================================
+Dataset               HR MAE+STD      RMSE      L1<2      L1<5     L1<10%r     RMSSD      SDNN     pNN50       N
+--------------------------------------------------------------------------------------------------------------
+Gesture             3.37+0.43        5.04    45.56%    80.43%      91.98%    73.04%    54.03%    36.93%    1034
+Static              3.38+0.76        4.58    42.41%    81.20%      92.17%    70.36%    57.23%    37.38%      34
+Free Form           3.13+0.43        4.42    42.92%    83.89%      94.13%    77.07%    52.60%    42.95%      38
+--------------------------------------------------------------------------------------------------------------
+================================================================================
+Training task3-v2v6-5000-to-our-wrist1ch | head=unet | fold=0
+Checkpoint: ./model_ckpt/wecg-chest-v2-v6-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3513, 1, 5000]) torch.Size([3513, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([818, 1, 5000]) torch.Size([818, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1197, 1, 5000]) torch.Size([1197, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2097 val_hr_bpm_mae=10.46 val_sdnn_ms_mae=29.64 val_rmssd_ms_mae=31.39 val_pnn50_pct_mae=20.81
+epoch 002 train_loss=0.2057 val_hr_bpm_mae=16.66 val_sdnn_ms_mae=30.61 val_rmssd_ms_mae=32.90 val_pnn50_pct_mae=20.67
+epoch 003 train_loss=0.2023 val_hr_bpm_mae=8.09 val_sdnn_ms_mae=30.03 val_rmssd_ms_mae=31.41 val_pnn50_pct_mae=20.02
+epoch 004 train_loss=0.1497 val_hr_bpm_mae=7.23 val_sdnn_ms_mae=26.69 val_rmssd_ms_mae=30.71 val_pnn50_pct_mae=19.19
+epoch 005 train_loss=0.1077 val_hr_bpm_mae=7.98 val_sdnn_ms_mae=28.64 val_rmssd_ms_mae=32.97 val_pnn50_pct_mae=14.58
+epoch 006 train_loss=0.0923 val_hr_bpm_mae=8.01 val_sdnn_ms_mae=25.07 val_rmssd_ms_mae=26.27 val_pnn50_pct_mae=15.34
+epoch 007 train_loss=0.0881 val_hr_bpm_mae=6.76 val_sdnn_ms_mae=24.02 val_rmssd_ms_mae=25.92 val_pnn50_pct_mae=14.92
+epoch 008 train_loss=0.0739 val_hr_bpm_mae=4.85 val_sdnn_ms_mae=23.30 val_rmssd_ms_mae=24.18 val_pnn50_pct_mae=13.58
+epoch 009 train_loss=0.0695 val_hr_bpm_mae=7.86 val_sdnn_ms_mae=26.17 val_rmssd_ms_mae=28.01 val_pnn50_pct_mae=13.53
+epoch 010 train_loss=0.0581 val_hr_bpm_mae=5.37 val_sdnn_ms_mae=23.87 val_rmssd_ms_mae=24.91 val_pnn50_pct_mae=12.69
+epoch 011 train_loss=0.0559 val_hr_bpm_mae=5.02 val_sdnn_ms_mae=23.39 val_rmssd_ms_mae=23.70 val_pnn50_pct_mae=13.60
+epoch 012 train_loss=0.0494 val_hr_bpm_mae=5.12 val_sdnn_ms_mae=22.89 val_rmssd_ms_mae=23.13 val_pnn50_pct_mae=12.67
+epoch 013 train_loss=0.0480 val_hr_bpm_mae=4.65 val_sdnn_ms_mae=22.57 val_rmssd_ms_mae=23.37 val_pnn50_pct_mae=12.48
+epoch 014 train_loss=0.0430 val_hr_bpm_mae=4.81 val_sdnn_ms_mae=22.65 val_rmssd_ms_mae=23.96 val_pnn50_pct_mae=12.75
+epoch 015 train_loss=0.0383 val_hr_bpm_mae=4.64 val_sdnn_ms_mae=22.97 val_rmssd_ms_mae=24.68 val_pnn50_pct_mae=12.16
+epoch 016 train_loss=0.0372 val_hr_bpm_mae=4.50 val_sdnn_ms_mae=21.78 val_rmssd_ms_mae=25.10 val_pnn50_pct_mae=12.74
+epoch 017 train_loss=0.0339 val_hr_bpm_mae=4.29 val_sdnn_ms_mae=21.72 val_rmssd_ms_mae=23.54 val_pnn50_pct_mae=12.14
+epoch 018 train_loss=0.0314 val_hr_bpm_mae=4.52 val_sdnn_ms_mae=23.46 val_rmssd_ms_mae=23.73 val_pnn50_pct_mae=13.16
+epoch 019 train_loss=0.0298 val_hr_bpm_mae=4.41 val_sdnn_ms_mae=21.54 val_rmssd_ms_mae=23.05 val_pnn50_pct_mae=12.17
+epoch 020 train_loss=0.0274 val_hr_bpm_mae=4.21 val_sdnn_ms_mae=21.76 val_rmssd_ms_mae=22.90 val_pnn50_pct_mae=11.98
+epoch 021 train_loss=0.0264 val_hr_bpm_mae=4.40 val_sdnn_ms_mae=21.70 val_rmssd_ms_mae=22.90 val_pnn50_pct_mae=12.02
+epoch 022 train_loss=0.0250 val_hr_bpm_mae=4.29 val_sdnn_ms_mae=21.52 val_rmssd_ms_mae=22.78 val_pnn50_pct_mae=12.03
+epoch 023 train_loss=0.0260 val_hr_bpm_mae=4.36 val_sdnn_ms_mae=21.65 val_rmssd_ms_mae=22.96 val_pnn50_pct_mae=11.97
+epoch 024 train_loss=0.0233 val_hr_bpm_mae=4.04 val_sdnn_ms_mae=21.97 val_rmssd_ms_mae=22.76 val_pnn50_pct_mae=12.24
+epoch 025 train_loss=0.0221 val_hr_bpm_mae=4.13 val_sdnn_ms_mae=21.87 val_rmssd_ms_mae=23.25 val_pnn50_pct_mae=12.48
+epoch 026 train_loss=0.0219 val_hr_bpm_mae=4.28 val_sdnn_ms_mae=21.49 val_rmssd_ms_mae=22.82 val_pnn50_pct_mae=11.65
+epoch 027 train_loss=0.0214 val_hr_bpm_mae=4.20 val_sdnn_ms_mae=21.48 val_rmssd_ms_mae=22.55 val_pnn50_pct_mae=11.94
+epoch 028 train_loss=0.0206 val_hr_bpm_mae=4.16 val_sdnn_ms_mae=21.49 val_rmssd_ms_mae=22.75 val_pnn50_pct_mae=12.15
+epoch 029 train_loss=0.0207 val_hr_bpm_mae=4.22 val_sdnn_ms_mae=21.50 val_rmssd_ms_mae=22.71 val_pnn50_pct_mae=11.82
+epoch 030 train_loss=0.0201 val_hr_bpm_mae=4.20 val_sdnn_ms_mae=21.50 val_rmssd_ms_mae=22.64 val_pnn50_pct_mae=11.72
+test_hr_bpm_mae=3.78 test_sdnn_ms_mae=17.29 test_rmssd_ms_mae=18.24 test_pnn50_pct_mae=9.29
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task3-v2v6-5000-to-our-wrist1ch/unet/fold_0/best.pt
+================================================================================
+Training task3-v2v6-5000-to-our-wrist1ch | head=unet | fold=1
+Checkpoint: ./model_ckpt/wecg-chest-v2-v6-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3465, 1, 5000]) torch.Size([3465, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([891, 1, 5000]) torch.Size([891, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1172, 1, 5000]) torch.Size([1172, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2239 val_hr_bpm_mae=15.48 val_sdnn_ms_mae=22.34 val_rmssd_ms_mae=18.39 val_pnn50_pct_mae=20.53
+epoch 002 train_loss=0.2083 val_hr_bpm_mae=7.81 val_sdnn_ms_mae=20.13 val_rmssd_ms_mae=22.44 val_pnn50_pct_mae=13.29
+epoch 003 train_loss=0.1643 val_hr_bpm_mae=7.83 val_sdnn_ms_mae=21.47 val_rmssd_ms_mae=18.52 val_pnn50_pct_mae=14.55
+epoch 004 train_loss=0.1330 val_hr_bpm_mae=6.92 val_sdnn_ms_mae=31.03 val_rmssd_ms_mae=34.10 val_pnn50_pct_mae=19.35
+epoch 005 train_loss=0.1097 val_hr_bpm_mae=7.81 val_sdnn_ms_mae=17.87 val_rmssd_ms_mae=15.45 val_pnn50_pct_mae=12.01
+epoch 006 train_loss=0.1036 val_hr_bpm_mae=6.20 val_sdnn_ms_mae=19.20 val_rmssd_ms_mae=20.45 val_pnn50_pct_mae=12.89
+epoch 007 train_loss=0.0884 val_hr_bpm_mae=5.52 val_sdnn_ms_mae=32.81 val_rmssd_ms_mae=36.11 val_pnn50_pct_mae=19.34
+epoch 008 train_loss=0.0842 val_hr_bpm_mae=5.42 val_sdnn_ms_mae=19.06 val_rmssd_ms_mae=19.55 val_pnn50_pct_mae=13.22
+epoch 009 train_loss=0.0723 val_hr_bpm_mae=5.84 val_sdnn_ms_mae=27.34 val_rmssd_ms_mae=28.95 val_pnn50_pct_mae=16.02
+epoch 010 train_loss=0.0687 val_hr_bpm_mae=4.95 val_sdnn_ms_mae=16.13 val_rmssd_ms_mae=13.00 val_pnn50_pct_mae=9.69
+epoch 011 train_loss=0.0593 val_hr_bpm_mae=4.70 val_sdnn_ms_mae=20.07 val_rmssd_ms_mae=21.99 val_pnn50_pct_mae=11.84
+epoch 012 train_loss=0.0608 val_hr_bpm_mae=4.95 val_sdnn_ms_mae=16.18 val_rmssd_ms_mae=13.31 val_pnn50_pct_mae=9.88
+epoch 013 train_loss=0.0568 val_hr_bpm_mae=5.09 val_sdnn_ms_mae=16.63 val_rmssd_ms_mae=14.57 val_pnn50_pct_mae=10.48
+epoch 014 train_loss=0.0511 val_hr_bpm_mae=5.36 val_sdnn_ms_mae=17.76 val_rmssd_ms_mae=13.03 val_pnn50_pct_mae=10.35
+epoch 015 train_loss=0.0471 val_hr_bpm_mae=4.84 val_sdnn_ms_mae=15.95 val_rmssd_ms_mae=13.87 val_pnn50_pct_mae=9.64
+epoch 016 train_loss=0.0448 val_hr_bpm_mae=4.60 val_sdnn_ms_mae=23.31 val_rmssd_ms_mae=23.82 val_pnn50_pct_mae=13.80
+epoch 017 train_loss=0.0387 val_hr_bpm_mae=4.37 val_sdnn_ms_mae=16.90 val_rmssd_ms_mae=16.01 val_pnn50_pct_mae=10.68
+epoch 018 train_loss=0.0363 val_hr_bpm_mae=3.99 val_sdnn_ms_mae=16.28 val_rmssd_ms_mae=14.18 val_pnn50_pct_mae=9.66
+epoch 019 train_loss=0.0364 val_hr_bpm_mae=3.83 val_sdnn_ms_mae=16.05 val_rmssd_ms_mae=13.27 val_pnn50_pct_mae=9.94
+epoch 020 train_loss=0.0339 val_hr_bpm_mae=3.62 val_sdnn_ms_mae=16.09 val_rmssd_ms_mae=14.64 val_pnn50_pct_mae=10.04
+epoch 021 train_loss=0.0302 val_hr_bpm_mae=3.68 val_sdnn_ms_mae=16.26 val_rmssd_ms_mae=14.40 val_pnn50_pct_mae=10.33
+epoch 022 train_loss=0.0287 val_hr_bpm_mae=3.67 val_sdnn_ms_mae=16.78 val_rmssd_ms_mae=15.36 val_pnn50_pct_mae=10.87
+epoch 023 train_loss=0.0291 val_hr_bpm_mae=3.53 val_sdnn_ms_mae=16.48 val_rmssd_ms_mae=13.88 val_pnn50_pct_mae=9.91
+epoch 024 train_loss=0.0261 val_hr_bpm_mae=3.61 val_sdnn_ms_mae=16.32 val_rmssd_ms_mae=14.27 val_pnn50_pct_mae=10.13
+epoch 025 train_loss=0.0265 val_hr_bpm_mae=3.47 val_sdnn_ms_mae=16.27 val_rmssd_ms_mae=14.62 val_pnn50_pct_mae=10.20
+epoch 026 train_loss=0.0246 val_hr_bpm_mae=3.55 val_sdnn_ms_mae=16.88 val_rmssd_ms_mae=14.69 val_pnn50_pct_mae=10.20
+epoch 027 train_loss=0.0244 val_hr_bpm_mae=3.44 val_sdnn_ms_mae=16.07 val_rmssd_ms_mae=13.81 val_pnn50_pct_mae=9.92
+epoch 028 train_loss=0.0230 val_hr_bpm_mae=3.53 val_sdnn_ms_mae=16.46 val_rmssd_ms_mae=14.54 val_pnn50_pct_mae=10.39
+epoch 029 train_loss=0.0227 val_hr_bpm_mae=3.46 val_sdnn_ms_mae=16.20 val_rmssd_ms_mae=14.10 val_pnn50_pct_mae=10.04
+epoch 030 train_loss=0.0239 val_hr_bpm_mae=3.49 val_sdnn_ms_mae=16.26 val_rmssd_ms_mae=14.11 val_pnn50_pct_mae=10.02
+test_hr_bpm_mae=3.53 test_sdnn_ms_mae=16.96 test_rmssd_ms_mae=17.94 test_pnn50_pct_mae=11.62
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task3-v2v6-5000-to-our-wrist1ch/unet/fold_1/best.pt
+================================================================================
+Training task3-v2v6-5000-to-our-wrist1ch | head=unet | fold=2
+Checkpoint: ./model_ckpt/wecg-chest-v2-v6-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3512, 1, 5000]) torch.Size([3512, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([863, 1, 5000]) torch.Size([863, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1153, 1, 5000]) torch.Size([1153, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2412 val_hr_bpm_mae=19.56 val_sdnn_ms_mae=26.22 val_rmssd_ms_mae=26.75 val_pnn50_pct_mae=31.41
+epoch 002 train_loss=0.2300 val_hr_bpm_mae=8.63 val_sdnn_ms_mae=25.64 val_rmssd_ms_mae=26.59 val_pnn50_pct_mae=25.64
+epoch 003 train_loss=0.2118 val_hr_bpm_mae=6.31 val_sdnn_ms_mae=21.85 val_rmssd_ms_mae=17.82 val_pnn50_pct_mae=13.53
+epoch 004 train_loss=0.1458 val_hr_bpm_mae=5.83 val_sdnn_ms_mae=17.50 val_rmssd_ms_mae=13.50 val_pnn50_pct_mae=10.58
+epoch 005 train_loss=0.1179 val_hr_bpm_mae=5.22 val_sdnn_ms_mae=26.03 val_rmssd_ms_mae=26.63 val_pnn50_pct_mae=17.08
+epoch 006 train_loss=0.1098 val_hr_bpm_mae=7.39 val_sdnn_ms_mae=15.56 val_rmssd_ms_mae=12.79 val_pnn50_pct_mae=12.12
+epoch 007 train_loss=0.0986 val_hr_bpm_mae=5.02 val_sdnn_ms_mae=15.56 val_rmssd_ms_mae=12.39 val_pnn50_pct_mae=8.99
+epoch 008 train_loss=0.0928 val_hr_bpm_mae=3.83 val_sdnn_ms_mae=16.15 val_rmssd_ms_mae=13.18 val_pnn50_pct_mae=8.88
+epoch 009 train_loss=0.0827 val_hr_bpm_mae=4.64 val_sdnn_ms_mae=17.83 val_rmssd_ms_mae=16.27 val_pnn50_pct_mae=12.46
+epoch 010 train_loss=0.0786 val_hr_bpm_mae=4.27 val_sdnn_ms_mae=18.23 val_rmssd_ms_mae=17.02 val_pnn50_pct_mae=12.30
+epoch 011 train_loss=0.0710 val_hr_bpm_mae=4.01 val_sdnn_ms_mae=16.44 val_rmssd_ms_mae=13.71 val_pnn50_pct_mae=8.96
+epoch 012 train_loss=0.0649 val_hr_bpm_mae=3.81 val_sdnn_ms_mae=16.23 val_rmssd_ms_mae=13.34 val_pnn50_pct_mae=9.34
+epoch 013 train_loss=0.0614 val_hr_bpm_mae=3.56 val_sdnn_ms_mae=15.14 val_rmssd_ms_mae=11.93 val_pnn50_pct_mae=8.51
+epoch 014 train_loss=0.0579 val_hr_bpm_mae=4.08 val_sdnn_ms_mae=16.56 val_rmssd_ms_mae=14.05 val_pnn50_pct_mae=9.98
+epoch 015 train_loss=0.0539 val_hr_bpm_mae=3.40 val_sdnn_ms_mae=15.59 val_rmssd_ms_mae=12.34 val_pnn50_pct_mae=8.41
+epoch 016 train_loss=0.0496 val_hr_bpm_mae=3.42 val_sdnn_ms_mae=14.09 val_rmssd_ms_mae=11.05 val_pnn50_pct_mae=8.57
+epoch 017 train_loss=0.0471 val_hr_bpm_mae=3.56 val_sdnn_ms_mae=14.62 val_rmssd_ms_mae=11.83 val_pnn50_pct_mae=8.47
+epoch 018 train_loss=0.0426 val_hr_bpm_mae=3.46 val_sdnn_ms_mae=14.71 val_rmssd_ms_mae=11.79 val_pnn50_pct_mae=9.01
+epoch 019 train_loss=0.0382 val_hr_bpm_mae=3.21 val_sdnn_ms_mae=15.92 val_rmssd_ms_mae=13.95 val_pnn50_pct_mae=8.56
+epoch 020 train_loss=0.0362 val_hr_bpm_mae=3.19 val_sdnn_ms_mae=14.13 val_rmssd_ms_mae=12.17 val_pnn50_pct_mae=8.40
+epoch 021 train_loss=0.0340 val_hr_bpm_mae=3.11 val_sdnn_ms_mae=14.01 val_rmssd_ms_mae=12.29 val_pnn50_pct_mae=8.17
+epoch 022 train_loss=0.0330 val_hr_bpm_mae=2.76 val_sdnn_ms_mae=13.99 val_rmssd_ms_mae=11.34 val_pnn50_pct_mae=7.57
+epoch 023 train_loss=0.0307 val_hr_bpm_mae=2.98 val_sdnn_ms_mae=13.91 val_rmssd_ms_mae=11.59 val_pnn50_pct_mae=8.36
+epoch 024 train_loss=0.0296 val_hr_bpm_mae=2.94 val_sdnn_ms_mae=13.87 val_rmssd_ms_mae=11.84 val_pnn50_pct_mae=7.97
+epoch 025 train_loss=0.0292 val_hr_bpm_mae=2.94 val_sdnn_ms_mae=13.73 val_rmssd_ms_mae=11.79 val_pnn50_pct_mae=8.15
+epoch 026 train_loss=0.0290 val_hr_bpm_mae=2.79 val_sdnn_ms_mae=13.75 val_rmssd_ms_mae=11.78 val_pnn50_pct_mae=8.06
+epoch 027 train_loss=0.0282 val_hr_bpm_mae=2.80 val_sdnn_ms_mae=13.63 val_rmssd_ms_mae=11.68 val_pnn50_pct_mae=7.88
+epoch 028 train_loss=0.0268 val_hr_bpm_mae=2.80 val_sdnn_ms_mae=13.58 val_rmssd_ms_mae=11.59 val_pnn50_pct_mae=7.84
+epoch 029 train_loss=0.0280 val_hr_bpm_mae=2.83 val_sdnn_ms_mae=13.68 val_rmssd_ms_mae=11.69 val_pnn50_pct_mae=8.07
+epoch 030 train_loss=0.0273 val_hr_bpm_mae=2.81 val_sdnn_ms_mae=13.79 val_rmssd_ms_mae=11.83 val_pnn50_pct_mae=8.16
+test_hr_bpm_mae=2.61 test_sdnn_ms_mae=14.03 test_rmssd_ms_mae=15.42 test_pnn50_pct_mae=9.52
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task3-v2v6-5000-to-our-wrist1ch/unet/fold_2/best.pt
+================================================================================
+Training task3-v2v6-5000-to-our-wrist1ch | head=unet | fold=3
+Checkpoint: ./model_ckpt/wecg-chest-v2-v6-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3589, 1, 5000]) torch.Size([3589, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([949, 1, 5000]) torch.Size([949, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([990, 1, 5000]) torch.Size([990, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2029 val_hr_bpm_mae=18.90 val_sdnn_ms_mae=30.98 val_rmssd_ms_mae=28.75 val_pnn50_pct_mae=30.43
+epoch 002 train_loss=0.1964 val_hr_bpm_mae=29.30 val_sdnn_ms_mae=25.72 val_rmssd_ms_mae=26.02 val_pnn50_pct_mae=28.73
+epoch 003 train_loss=0.1886 val_hr_bpm_mae=21.38 val_sdnn_ms_mae=26.01 val_rmssd_ms_mae=25.26 val_pnn50_pct_mae=22.99
+epoch 004 train_loss=0.1592 val_hr_bpm_mae=5.92 val_sdnn_ms_mae=19.67 val_rmssd_ms_mae=16.43 val_pnn50_pct_mae=10.57
+epoch 005 train_loss=0.1248 val_hr_bpm_mae=7.71 val_sdnn_ms_mae=18.21 val_rmssd_ms_mae=16.62 val_pnn50_pct_mae=10.35
+epoch 006 train_loss=0.1074 val_hr_bpm_mae=5.05 val_sdnn_ms_mae=19.04 val_rmssd_ms_mae=17.61 val_pnn50_pct_mae=10.84
+epoch 007 train_loss=0.1004 val_hr_bpm_mae=8.14 val_sdnn_ms_mae=19.93 val_rmssd_ms_mae=18.99 val_pnn50_pct_mae=13.66
+epoch 008 train_loss=0.0883 val_hr_bpm_mae=4.80 val_sdnn_ms_mae=20.04 val_rmssd_ms_mae=19.00 val_pnn50_pct_mae=11.29
+epoch 009 train_loss=0.0834 val_hr_bpm_mae=5.15 val_sdnn_ms_mae=17.99 val_rmssd_ms_mae=16.56 val_pnn50_pct_mae=10.06
+epoch 010 train_loss=0.0777 val_hr_bpm_mae=4.52 val_sdnn_ms_mae=18.57 val_rmssd_ms_mae=18.50 val_pnn50_pct_mae=10.85
+epoch 011 train_loss=0.0665 val_hr_bpm_mae=4.49 val_sdnn_ms_mae=19.68 val_rmssd_ms_mae=20.91 val_pnn50_pct_mae=10.94
+epoch 012 train_loss=0.0583 val_hr_bpm_mae=4.90 val_sdnn_ms_mae=18.47 val_rmssd_ms_mae=17.89 val_pnn50_pct_mae=10.40
+epoch 013 train_loss=0.0604 val_hr_bpm_mae=4.10 val_sdnn_ms_mae=17.53 val_rmssd_ms_mae=16.85 val_pnn50_pct_mae=9.42
+epoch 014 train_loss=0.0543 val_hr_bpm_mae=4.74 val_sdnn_ms_mae=20.45 val_rmssd_ms_mae=20.12 val_pnn50_pct_mae=11.09
+epoch 015 train_loss=0.0520 val_hr_bpm_mae=4.28 val_sdnn_ms_mae=17.96 val_rmssd_ms_mae=17.74 val_pnn50_pct_mae=10.15
+epoch 016 train_loss=0.0455 val_hr_bpm_mae=3.94 val_sdnn_ms_mae=18.31 val_rmssd_ms_mae=19.79 val_pnn50_pct_mae=10.50
+epoch 017 train_loss=0.0415 val_hr_bpm_mae=3.79 val_sdnn_ms_mae=17.10 val_rmssd_ms_mae=16.85 val_pnn50_pct_mae=9.68
+epoch 018 train_loss=0.0398 val_hr_bpm_mae=4.05 val_sdnn_ms_mae=19.04 val_rmssd_ms_mae=18.66 val_pnn50_pct_mae=10.10
+epoch 019 train_loss=0.0380 val_hr_bpm_mae=3.82 val_sdnn_ms_mae=17.89 val_rmssd_ms_mae=18.69 val_pnn50_pct_mae=9.95
+epoch 020 train_loss=0.0341 val_hr_bpm_mae=4.38 val_sdnn_ms_mae=18.66 val_rmssd_ms_mae=18.39 val_pnn50_pct_mae=9.98
+epoch 021 train_loss=0.0327 val_hr_bpm_mae=3.75 val_sdnn_ms_mae=17.38 val_rmssd_ms_mae=18.12 val_pnn50_pct_mae=10.14
+epoch 022 train_loss=0.0321 val_hr_bpm_mae=3.79 val_sdnn_ms_mae=17.61 val_rmssd_ms_mae=18.31 val_pnn50_pct_mae=9.67
+epoch 023 train_loss=0.0304 val_hr_bpm_mae=3.52 val_sdnn_ms_mae=17.47 val_rmssd_ms_mae=17.91 val_pnn50_pct_mae=9.63
+epoch 024 train_loss=0.0303 val_hr_bpm_mae=3.79 val_sdnn_ms_mae=17.67 val_rmssd_ms_mae=18.72 val_pnn50_pct_mae=10.11
+epoch 025 train_loss=0.0276 val_hr_bpm_mae=3.82 val_sdnn_ms_mae=18.42 val_rmssd_ms_mae=18.55 val_pnn50_pct_mae=10.10
+epoch 026 train_loss=0.0267 val_hr_bpm_mae=3.83 val_sdnn_ms_mae=17.90 val_rmssd_ms_mae=18.62 val_pnn50_pct_mae=10.06
+epoch 027 train_loss=0.0259 val_hr_bpm_mae=3.61 val_sdnn_ms_mae=17.72 val_rmssd_ms_mae=18.66 val_pnn50_pct_mae=9.89
+epoch 028 train_loss=0.0262 val_hr_bpm_mae=3.78 val_sdnn_ms_mae=17.89 val_rmssd_ms_mae=18.66 val_pnn50_pct_mae=10.01
+epoch 029 train_loss=0.0238 val_hr_bpm_mae=3.80 val_sdnn_ms_mae=17.99 val_rmssd_ms_mae=18.64 val_pnn50_pct_mae=10.03
+epoch 030 train_loss=0.0257 val_hr_bpm_mae=3.88 val_sdnn_ms_mae=17.68 val_rmssd_ms_mae=19.07 val_pnn50_pct_mae=10.22
+test_hr_bpm_mae=4.32 test_sdnn_ms_mae=19.84 test_rmssd_ms_mae=21.85 test_pnn50_pct_mae=11.14
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task3-v2v6-5000-to-our-wrist1ch/unet/fold_3/best.pt
+================================================================================
+Training task3-v2v6-5000-to-our-wrist1ch | head=unet | fold=4
+Checkpoint: ./model_ckpt/wecg-chest-v2-v6-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3581, 1, 5000]) torch.Size([3581, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([931, 1, 5000]) torch.Size([931, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1016, 1, 5000]) torch.Size([1016, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2006 val_hr_bpm_mae=13.76 val_sdnn_ms_mae=30.22 val_rmssd_ms_mae=29.94 val_pnn50_pct_mae=25.28
+epoch 002 train_loss=0.1892 val_hr_bpm_mae=22.69 val_sdnn_ms_mae=31.63 val_rmssd_ms_mae=33.17 val_pnn50_pct_mae=25.05
+epoch 003 train_loss=0.1759 val_hr_bpm_mae=9.30 val_sdnn_ms_mae=29.56 val_rmssd_ms_mae=34.58 val_pnn50_pct_mae=18.51
+epoch 004 train_loss=0.1448 val_hr_bpm_mae=6.73 val_sdnn_ms_mae=26.26 val_rmssd_ms_mae=28.15 val_pnn50_pct_mae=15.45
+epoch 005 train_loss=0.1273 val_hr_bpm_mae=8.91 val_sdnn_ms_mae=20.67 val_rmssd_ms_mae=23.97 val_pnn50_pct_mae=13.82
+epoch 006 train_loss=0.1047 val_hr_bpm_mae=5.90 val_sdnn_ms_mae=21.40 val_rmssd_ms_mae=23.05 val_pnn50_pct_mae=13.15
+epoch 007 train_loss=0.0897 val_hr_bpm_mae=7.02 val_sdnn_ms_mae=22.46 val_rmssd_ms_mae=25.18 val_pnn50_pct_mae=15.41
+epoch 008 train_loss=0.0806 val_hr_bpm_mae=5.31 val_sdnn_ms_mae=20.44 val_rmssd_ms_mae=22.70 val_pnn50_pct_mae=12.72
+epoch 009 train_loss=0.0724 val_hr_bpm_mae=5.50 val_sdnn_ms_mae=20.56 val_rmssd_ms_mae=23.16 val_pnn50_pct_mae=12.84
+epoch 010 train_loss=0.0639 val_hr_bpm_mae=5.62 val_sdnn_ms_mae=21.34 val_rmssd_ms_mae=24.91 val_pnn50_pct_mae=13.41
+epoch 011 train_loss=0.0625 val_hr_bpm_mae=5.44 val_sdnn_ms_mae=20.45 val_rmssd_ms_mae=22.07 val_pnn50_pct_mae=12.01
+epoch 012 train_loss=0.0549 val_hr_bpm_mae=5.58 val_sdnn_ms_mae=21.57 val_rmssd_ms_mae=24.13 val_pnn50_pct_mae=12.67
+epoch 013 train_loss=0.0502 val_hr_bpm_mae=5.11 val_sdnn_ms_mae=22.98 val_rmssd_ms_mae=25.00 val_pnn50_pct_mae=14.63
+epoch 014 train_loss=0.0459 val_hr_bpm_mae=5.54 val_sdnn_ms_mae=20.70 val_rmssd_ms_mae=23.23 val_pnn50_pct_mae=12.19
+epoch 015 train_loss=0.0464 val_hr_bpm_mae=5.08 val_sdnn_ms_mae=20.82 val_rmssd_ms_mae=22.71 val_pnn50_pct_mae=12.64
+epoch 016 train_loss=0.0398 val_hr_bpm_mae=5.44 val_sdnn_ms_mae=21.58 val_rmssd_ms_mae=22.65 val_pnn50_pct_mae=12.02
+epoch 017 train_loss=0.0375 val_hr_bpm_mae=5.05 val_sdnn_ms_mae=21.67 val_rmssd_ms_mae=24.11 val_pnn50_pct_mae=13.99
+epoch 018 train_loss=0.0361 val_hr_bpm_mae=5.04 val_sdnn_ms_mae=21.09 val_rmssd_ms_mae=22.22 val_pnn50_pct_mae=12.45
+epoch 019 train_loss=0.0324 val_hr_bpm_mae=5.02 val_sdnn_ms_mae=21.52 val_rmssd_ms_mae=23.16 val_pnn50_pct_mae=12.28
+epoch 020 train_loss=0.0320 val_hr_bpm_mae=4.67 val_sdnn_ms_mae=20.84 val_rmssd_ms_mae=23.22 val_pnn50_pct_mae=12.05
+epoch 021 train_loss=0.0296 val_hr_bpm_mae=4.80 val_sdnn_ms_mae=21.37 val_rmssd_ms_mae=22.17 val_pnn50_pct_mae=11.72
+epoch 022 train_loss=0.0289 val_hr_bpm_mae=4.78 val_sdnn_ms_mae=21.07 val_rmssd_ms_mae=22.51 val_pnn50_pct_mae=11.96
+epoch 023 train_loss=0.0267 val_hr_bpm_mae=4.63 val_sdnn_ms_mae=21.32 val_rmssd_ms_mae=22.46 val_pnn50_pct_mae=11.79
+epoch 024 train_loss=0.0279 val_hr_bpm_mae=4.76 val_sdnn_ms_mae=21.20 val_rmssd_ms_mae=22.49 val_pnn50_pct_mae=11.81
+epoch 025 train_loss=0.0245 val_hr_bpm_mae=4.65 val_sdnn_ms_mae=21.01 val_rmssd_ms_mae=22.18 val_pnn50_pct_mae=11.89
+epoch 026 train_loss=0.0241 val_hr_bpm_mae=4.68 val_sdnn_ms_mae=21.21 val_rmssd_ms_mae=22.33 val_pnn50_pct_mae=11.89
+epoch 027 train_loss=0.0243 val_hr_bpm_mae=4.72 val_sdnn_ms_mae=21.28 val_rmssd_ms_mae=22.48 val_pnn50_pct_mae=11.92
+epoch 028 train_loss=0.0241 val_hr_bpm_mae=4.63 val_sdnn_ms_mae=21.19 val_rmssd_ms_mae=22.44 val_pnn50_pct_mae=11.88
+epoch 029 train_loss=0.0236 val_hr_bpm_mae=4.66 val_sdnn_ms_mae=21.22 val_rmssd_ms_mae=22.43 val_pnn50_pct_mae=11.90
+epoch 030 train_loss=0.0227 val_hr_bpm_mae=4.70 val_sdnn_ms_mae=21.35 val_rmssd_ms_mae=22.59 val_pnn50_pct_mae=12.02
+test_hr_bpm_mae=4.09 test_sdnn_ms_mae=19.06 test_rmssd_ms_mae=18.18 test_pnn50_pct_mae=10.61
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task3-v2v6-5000-to-our-wrist1ch/unet/fold_4/best.pt
+==============================================================================================================
+FINAL RESULTS - 5-FOLD WRIST ECG HR/HRV REGRESSION
+Metrics are fold-wise mean+-std across 5 folds
+HR: L1 regression metrics | HRV: within 5% of pooled GT range
+==============================================================================================================
+Dataset               HR MAE+STD      RMSE      L1<2      L1<5     L1<10%r     RMSSD      SDNN     pNN50       N
+--------------------------------------------------------------------------------------------------------------
+Gesture             3.70+0.63        5.53    41.80%    77.29%      91.20%    74.32%    56.84%    39.42%    1034
+Static              3.17+0.76        4.70    47.28%    85.49%      92.64%    70.85%    54.97%    41.08%      34
+Free Form           3.31+0.35        4.86    43.04%    82.06%      93.66%    79.46%    61.50%    43.39%      38
+--------------------------------------------------------------------------------------------------------------
+================================================================================
+Training task4-wrist2lead-5000-to-our-wrist1ch | head=unet | fold=0
+Checkpoint: ./model_ckpt/wecg-wrist-2lead-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3513, 1, 5000]) torch.Size([3513, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([818, 1, 5000]) torch.Size([818, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1197, 1, 5000]) torch.Size([1197, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2245 val_hr_bpm_mae=18.71 val_sdnn_ms_mae=28.93 val_rmssd_ms_mae=31.88 val_pnn50_pct_mae=30.38
+epoch 002 train_loss=0.2050 val_hr_bpm_mae=22.09 val_sdnn_ms_mae=29.25 val_rmssd_ms_mae=32.44 val_pnn50_pct_mae=27.40
+epoch 003 train_loss=0.1962 val_hr_bpm_mae=7.89 val_sdnn_ms_mae=28.61 val_rmssd_ms_mae=31.20 val_pnn50_pct_mae=19.60
+epoch 004 train_loss=0.1394 val_hr_bpm_mae=6.56 val_sdnn_ms_mae=28.89 val_rmssd_ms_mae=29.88 val_pnn50_pct_mae=14.17
+epoch 005 train_loss=0.1075 val_hr_bpm_mae=7.76 val_sdnn_ms_mae=23.94 val_rmssd_ms_mae=26.22 val_pnn50_pct_mae=14.96
+epoch 006 train_loss=0.0955 val_hr_bpm_mae=5.49 val_sdnn_ms_mae=23.79 val_rmssd_ms_mae=25.22 val_pnn50_pct_mae=13.68
+epoch 007 train_loss=0.0865 val_hr_bpm_mae=5.80 val_sdnn_ms_mae=25.95 val_rmssd_ms_mae=26.54 val_pnn50_pct_mae=13.02
+epoch 008 train_loss=0.0796 val_hr_bpm_mae=5.43 val_sdnn_ms_mae=23.76 val_rmssd_ms_mae=24.41 val_pnn50_pct_mae=14.09
+epoch 009 train_loss=0.0727 val_hr_bpm_mae=5.03 val_sdnn_ms_mae=23.15 val_rmssd_ms_mae=24.37 val_pnn50_pct_mae=12.48
+epoch 010 train_loss=0.0638 val_hr_bpm_mae=5.77 val_sdnn_ms_mae=25.08 val_rmssd_ms_mae=28.58 val_pnn50_pct_mae=13.20
+epoch 011 train_loss=0.0580 val_hr_bpm_mae=6.92 val_sdnn_ms_mae=29.78 val_rmssd_ms_mae=30.29 val_pnn50_pct_mae=16.02
+epoch 012 train_loss=0.0544 val_hr_bpm_mae=4.17 val_sdnn_ms_mae=23.38 val_rmssd_ms_mae=25.34 val_pnn50_pct_mae=14.45
+epoch 013 train_loss=0.0500 val_hr_bpm_mae=5.20 val_sdnn_ms_mae=26.33 val_rmssd_ms_mae=29.53 val_pnn50_pct_mae=12.68
+epoch 014 train_loss=0.0452 val_hr_bpm_mae=4.73 val_sdnn_ms_mae=22.88 val_rmssd_ms_mae=23.97 val_pnn50_pct_mae=11.98
+epoch 015 train_loss=0.0435 val_hr_bpm_mae=5.45 val_sdnn_ms_mae=23.81 val_rmssd_ms_mae=24.33 val_pnn50_pct_mae=11.79
+epoch 016 train_loss=0.0411 val_hr_bpm_mae=4.10 val_sdnn_ms_mae=22.92 val_rmssd_ms_mae=24.21 val_pnn50_pct_mae=13.55
+epoch 017 train_loss=0.0376 val_hr_bpm_mae=3.99 val_sdnn_ms_mae=22.97 val_rmssd_ms_mae=24.15 val_pnn50_pct_mae=12.46
+epoch 018 train_loss=0.0360 val_hr_bpm_mae=4.20 val_sdnn_ms_mae=23.07 val_rmssd_ms_mae=24.88 val_pnn50_pct_mae=11.81
+epoch 019 train_loss=0.0340 val_hr_bpm_mae=3.85 val_sdnn_ms_mae=22.28 val_rmssd_ms_mae=24.01 val_pnn50_pct_mae=11.79
+epoch 020 train_loss=0.0322 val_hr_bpm_mae=4.17 val_sdnn_ms_mae=22.51 val_rmssd_ms_mae=24.04 val_pnn50_pct_mae=12.14
+epoch 021 train_loss=0.0315 val_hr_bpm_mae=3.68 val_sdnn_ms_mae=22.04 val_rmssd_ms_mae=23.32 val_pnn50_pct_mae=12.51
+epoch 022 train_loss=0.0281 val_hr_bpm_mae=3.66 val_sdnn_ms_mae=22.15 val_rmssd_ms_mae=23.52 val_pnn50_pct_mae=12.00
+epoch 023 train_loss=0.0264 val_hr_bpm_mae=3.78 val_sdnn_ms_mae=21.90 val_rmssd_ms_mae=23.35 val_pnn50_pct_mae=12.43
+epoch 024 train_loss=0.0259 val_hr_bpm_mae=3.70 val_sdnn_ms_mae=22.48 val_rmssd_ms_mae=23.99 val_pnn50_pct_mae=12.26
+epoch 025 train_loss=0.0250 val_hr_bpm_mae=3.62 val_sdnn_ms_mae=21.94 val_rmssd_ms_mae=23.33 val_pnn50_pct_mae=12.09
+epoch 026 train_loss=0.0249 val_hr_bpm_mae=3.72 val_sdnn_ms_mae=21.68 val_rmssd_ms_mae=23.06 val_pnn50_pct_mae=11.98
+epoch 027 train_loss=0.0224 val_hr_bpm_mae=3.71 val_sdnn_ms_mae=21.81 val_rmssd_ms_mae=22.99 val_pnn50_pct_mae=12.09
+epoch 028 train_loss=0.0225 val_hr_bpm_mae=3.64 val_sdnn_ms_mae=21.72 val_rmssd_ms_mae=22.98 val_pnn50_pct_mae=12.01
+epoch 029 train_loss=0.0220 val_hr_bpm_mae=3.63 val_sdnn_ms_mae=21.92 val_rmssd_ms_mae=23.24 val_pnn50_pct_mae=12.09
+epoch 030 train_loss=0.0227 val_hr_bpm_mae=3.65 val_sdnn_ms_mae=21.83 val_rmssd_ms_mae=23.20 val_pnn50_pct_mae=12.00
+test_hr_bpm_mae=3.62 test_sdnn_ms_mae=18.05 test_rmssd_ms_mae=18.54 test_pnn50_pct_mae=9.65
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task4-wrist2lead-5000-to-our-wrist1ch/unet/fold_0/best.pt
+================================================================================
+Training task4-wrist2lead-5000-to-our-wrist1ch | head=unet | fold=1
+Checkpoint: ./model_ckpt/wecg-wrist-2lead-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3465, 1, 5000]) torch.Size([3465, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([891, 1, 5000]) torch.Size([891, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1172, 1, 5000]) torch.Size([1172, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2281 val_hr_bpm_mae=19.42 val_sdnn_ms_mae=20.98 val_rmssd_ms_mae=18.43 val_pnn50_pct_mae=26.09
+epoch 002 train_loss=0.2086 val_hr_bpm_mae=11.04 val_sdnn_ms_mae=18.97 val_rmssd_ms_mae=18.60 val_pnn50_pct_mae=17.07
+epoch 003 train_loss=0.1604 val_hr_bpm_mae=8.29 val_sdnn_ms_mae=38.29 val_rmssd_ms_mae=44.29 val_pnn50_pct_mae=20.31
+epoch 004 train_loss=0.1255 val_hr_bpm_mae=6.89 val_sdnn_ms_mae=18.72 val_rmssd_ms_mae=17.33 val_pnn50_pct_mae=11.72
+epoch 005 train_loss=0.1089 val_hr_bpm_mae=5.35 val_sdnn_ms_mae=17.34 val_rmssd_ms_mae=14.42 val_pnn50_pct_mae=11.32
+epoch 006 train_loss=0.0932 val_hr_bpm_mae=4.27 val_sdnn_ms_mae=24.78 val_rmssd_ms_mae=25.61 val_pnn50_pct_mae=14.95
+epoch 007 train_loss=0.0862 val_hr_bpm_mae=4.38 val_sdnn_ms_mae=21.43 val_rmssd_ms_mae=24.07 val_pnn50_pct_mae=12.89
+epoch 008 train_loss=0.0782 val_hr_bpm_mae=4.10 val_sdnn_ms_mae=27.88 val_rmssd_ms_mae=35.58 val_pnn50_pct_mae=18.13
+epoch 009 train_loss=0.0743 val_hr_bpm_mae=5.17 val_sdnn_ms_mae=19.61 val_rmssd_ms_mae=24.87 val_pnn50_pct_mae=13.89
+epoch 010 train_loss=0.0664 val_hr_bpm_mae=5.56 val_sdnn_ms_mae=14.79 val_rmssd_ms_mae=13.92 val_pnn50_pct_mae=10.50
+epoch 011 train_loss=0.0585 val_hr_bpm_mae=3.82 val_sdnn_ms_mae=15.44 val_rmssd_ms_mae=13.44 val_pnn50_pct_mae=9.45
+epoch 012 train_loss=0.0600 val_hr_bpm_mae=5.89 val_sdnn_ms_mae=23.75 val_rmssd_ms_mae=25.77 val_pnn50_pct_mae=15.69
+epoch 013 train_loss=0.0550 val_hr_bpm_mae=5.10 val_sdnn_ms_mae=16.78 val_rmssd_ms_mae=14.54 val_pnn50_pct_mae=10.98
+epoch 014 train_loss=0.0475 val_hr_bpm_mae=4.20 val_sdnn_ms_mae=15.49 val_rmssd_ms_mae=13.61 val_pnn50_pct_mae=9.94
+epoch 015 train_loss=0.0446 val_hr_bpm_mae=3.98 val_sdnn_ms_mae=15.01 val_rmssd_ms_mae=13.90 val_pnn50_pct_mae=9.42
+epoch 016 train_loss=0.0411 val_hr_bpm_mae=4.45 val_sdnn_ms_mae=15.52 val_rmssd_ms_mae=14.87 val_pnn50_pct_mae=10.30
+epoch 017 train_loss=0.0388 val_hr_bpm_mae=3.94 val_sdnn_ms_mae=15.40 val_rmssd_ms_mae=13.92 val_pnn50_pct_mae=9.95
+epoch 018 train_loss=0.0377 val_hr_bpm_mae=3.97 val_sdnn_ms_mae=14.89 val_rmssd_ms_mae=13.43 val_pnn50_pct_mae=9.84
+epoch 019 train_loss=0.0345 val_hr_bpm_mae=3.99 val_sdnn_ms_mae=15.02 val_rmssd_ms_mae=14.47 val_pnn50_pct_mae=9.90
+epoch 020 train_loss=0.0324 val_hr_bpm_mae=3.73 val_sdnn_ms_mae=15.06 val_rmssd_ms_mae=14.68 val_pnn50_pct_mae=9.57
+epoch 021 train_loss=0.0324 val_hr_bpm_mae=3.49 val_sdnn_ms_mae=15.09 val_rmssd_ms_mae=14.44 val_pnn50_pct_mae=9.64
+epoch 022 train_loss=0.0302 val_hr_bpm_mae=3.45 val_sdnn_ms_mae=14.81 val_rmssd_ms_mae=13.24 val_pnn50_pct_mae=9.74
+epoch 023 train_loss=0.0267 val_hr_bpm_mae=3.59 val_sdnn_ms_mae=15.35 val_rmssd_ms_mae=15.12 val_pnn50_pct_mae=9.87
+epoch 024 train_loss=0.0260 val_hr_bpm_mae=3.56 val_sdnn_ms_mae=15.18 val_rmssd_ms_mae=15.29 val_pnn50_pct_mae=10.05
+epoch 025 train_loss=0.0243 val_hr_bpm_mae=3.51 val_sdnn_ms_mae=15.16 val_rmssd_ms_mae=15.00 val_pnn50_pct_mae=10.14
+epoch 026 train_loss=0.0248 val_hr_bpm_mae=3.38 val_sdnn_ms_mae=14.82 val_rmssd_ms_mae=14.03 val_pnn50_pct_mae=9.71
+epoch 027 train_loss=0.0248 val_hr_bpm_mae=3.37 val_sdnn_ms_mae=14.98 val_rmssd_ms_mae=14.52 val_pnn50_pct_mae=9.76
+epoch 028 train_loss=0.0229 val_hr_bpm_mae=3.39 val_sdnn_ms_mae=14.90 val_rmssd_ms_mae=14.29 val_pnn50_pct_mae=9.66
+epoch 029 train_loss=0.0239 val_hr_bpm_mae=3.38 val_sdnn_ms_mae=14.97 val_rmssd_ms_mae=14.64 val_pnn50_pct_mae=9.96
+epoch 030 train_loss=0.0227 val_hr_bpm_mae=3.43 val_sdnn_ms_mae=15.06 val_rmssd_ms_mae=14.67 val_pnn50_pct_mae=10.02
+test_hr_bpm_mae=3.33 test_sdnn_ms_mae=17.39 test_rmssd_ms_mae=18.17 test_pnn50_pct_mae=11.78
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task4-wrist2lead-5000-to-our-wrist1ch/unet/fold_1/best.pt
+================================================================================
+Training task4-wrist2lead-5000-to-our-wrist1ch | head=unet | fold=2
+Checkpoint: ./model_ckpt/wecg-wrist-2lead-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3512, 1, 5000]) torch.Size([3512, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([863, 1, 5000]) torch.Size([863, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1153, 1, 5000]) torch.Size([1153, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2400 val_hr_bpm_mae=16.57 val_sdnn_ms_mae=29.21 val_rmssd_ms_mae=30.15 val_pnn50_pct_mae=26.32
+epoch 002 train_loss=0.2292 val_hr_bpm_mae=12.77 val_sdnn_ms_mae=22.13 val_rmssd_ms_mae=28.71 val_pnn50_pct_mae=23.16
+epoch 003 train_loss=0.1988 val_hr_bpm_mae=5.64 val_sdnn_ms_mae=18.39 val_rmssd_ms_mae=15.34 val_pnn50_pct_mae=9.54
+epoch 004 train_loss=0.1345 val_hr_bpm_mae=9.42 val_sdnn_ms_mae=18.77 val_rmssd_ms_mae=17.00 val_pnn50_pct_mae=14.34
+epoch 005 train_loss=0.1201 val_hr_bpm_mae=4.52 val_sdnn_ms_mae=17.63 val_rmssd_ms_mae=14.69 val_pnn50_pct_mae=9.60
+epoch 006 train_loss=0.1092 val_hr_bpm_mae=5.39 val_sdnn_ms_mae=16.12 val_rmssd_ms_mae=13.00 val_pnn50_pct_mae=9.90
+epoch 007 train_loss=0.0977 val_hr_bpm_mae=4.54 val_sdnn_ms_mae=15.70 val_rmssd_ms_mae=12.05 val_pnn50_pct_mae=8.88
+epoch 008 train_loss=0.0868 val_hr_bpm_mae=3.90 val_sdnn_ms_mae=20.08 val_rmssd_ms_mae=19.49 val_pnn50_pct_mae=13.06
+epoch 009 train_loss=0.0838 val_hr_bpm_mae=5.17 val_sdnn_ms_mae=17.45 val_rmssd_ms_mae=16.39 val_pnn50_pct_mae=12.92
+epoch 010 train_loss=0.0731 val_hr_bpm_mae=3.43 val_sdnn_ms_mae=15.73 val_rmssd_ms_mae=13.58 val_pnn50_pct_mae=8.65
+epoch 011 train_loss=0.0637 val_hr_bpm_mae=3.21 val_sdnn_ms_mae=15.62 val_rmssd_ms_mae=14.19 val_pnn50_pct_mae=8.85
+epoch 012 train_loss=0.0622 val_hr_bpm_mae=3.75 val_sdnn_ms_mae=19.31 val_rmssd_ms_mae=20.14 val_pnn50_pct_mae=11.56
+epoch 013 train_loss=0.0579 val_hr_bpm_mae=3.17 val_sdnn_ms_mae=14.72 val_rmssd_ms_mae=12.00 val_pnn50_pct_mae=8.68
+epoch 014 train_loss=0.0546 val_hr_bpm_mae=3.36 val_sdnn_ms_mae=17.85 val_rmssd_ms_mae=19.56 val_pnn50_pct_mae=12.10
+epoch 015 train_loss=0.0519 val_hr_bpm_mae=2.97 val_sdnn_ms_mae=17.51 val_rmssd_ms_mae=15.03 val_pnn50_pct_mae=9.39
+epoch 016 train_loss=0.0487 val_hr_bpm_mae=3.05 val_sdnn_ms_mae=14.85 val_rmssd_ms_mae=11.97 val_pnn50_pct_mae=8.79
+epoch 017 train_loss=0.0444 val_hr_bpm_mae=3.16 val_sdnn_ms_mae=15.74 val_rmssd_ms_mae=13.16 val_pnn50_pct_mae=10.31
+epoch 018 train_loss=0.0416 val_hr_bpm_mae=3.25 val_sdnn_ms_mae=15.92 val_rmssd_ms_mae=13.55 val_pnn50_pct_mae=10.19
+epoch 019 train_loss=0.0397 val_hr_bpm_mae=3.07 val_sdnn_ms_mae=15.30 val_rmssd_ms_mae=14.16 val_pnn50_pct_mae=10.00
+epoch 020 train_loss=0.0359 val_hr_bpm_mae=2.76 val_sdnn_ms_mae=14.87 val_rmssd_ms_mae=12.77 val_pnn50_pct_mae=8.74
+epoch 021 train_loss=0.0335 val_hr_bpm_mae=2.61 val_sdnn_ms_mae=14.09 val_rmssd_ms_mae=11.71 val_pnn50_pct_mae=8.50
+epoch 022 train_loss=0.0330 val_hr_bpm_mae=2.45 val_sdnn_ms_mae=14.79 val_rmssd_ms_mae=12.83 val_pnn50_pct_mae=9.19
+epoch 023 train_loss=0.0316 val_hr_bpm_mae=2.66 val_sdnn_ms_mae=14.87 val_rmssd_ms_mae=13.32 val_pnn50_pct_mae=9.52
+epoch 024 train_loss=0.0303 val_hr_bpm_mae=2.50 val_sdnn_ms_mae=15.65 val_rmssd_ms_mae=14.13 val_pnn50_pct_mae=10.21
+epoch 025 train_loss=0.0294 val_hr_bpm_mae=2.52 val_sdnn_ms_mae=15.14 val_rmssd_ms_mae=12.76 val_pnn50_pct_mae=9.15
+epoch 026 train_loss=0.0279 val_hr_bpm_mae=2.60 val_sdnn_ms_mae=15.01 val_rmssd_ms_mae=13.14 val_pnn50_pct_mae=9.36
+epoch 027 train_loss=0.0260 val_hr_bpm_mae=2.47 val_sdnn_ms_mae=14.95 val_rmssd_ms_mae=13.25 val_pnn50_pct_mae=9.45
+epoch 028 train_loss=0.0265 val_hr_bpm_mae=2.51 val_sdnn_ms_mae=14.90 val_rmssd_ms_mae=13.21 val_pnn50_pct_mae=9.46
+epoch 029 train_loss=0.0264 val_hr_bpm_mae=2.52 val_sdnn_ms_mae=14.84 val_rmssd_ms_mae=13.07 val_pnn50_pct_mae=9.36
+epoch 030 train_loss=0.0260 val_hr_bpm_mae=2.47 val_sdnn_ms_mae=14.59 val_rmssd_ms_mae=12.46 val_pnn50_pct_mae=9.11
+test_hr_bpm_mae=2.85 test_sdnn_ms_mae=13.37 test_rmssd_ms_mae=14.78 test_pnn50_pct_mae=9.06
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task4-wrist2lead-5000-to-our-wrist1ch/unet/fold_2/best.pt
+================================================================================
+Training task4-wrist2lead-5000-to-our-wrist1ch | head=unet | fold=3
+Checkpoint: ./model_ckpt/wecg-wrist-2lead-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3589, 1, 5000]) torch.Size([3589, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([949, 1, 5000]) torch.Size([949, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([990, 1, 5000]) torch.Size([990, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.2061 val_hr_bpm_mae=25.84 val_sdnn_ms_mae=25.33 val_rmssd_ms_mae=29.92 val_pnn50_pct_mae=26.21
+epoch 002 train_loss=0.1937 val_hr_bpm_mae=14.05 val_sdnn_ms_mae=24.73 val_rmssd_ms_mae=25.36 val_pnn50_pct_mae=18.97
+epoch 003 train_loss=0.1725 val_hr_bpm_mae=9.67 val_sdnn_ms_mae=22.49 val_rmssd_ms_mae=21.98 val_pnn50_pct_mae=15.83
+epoch 004 train_loss=0.1306 val_hr_bpm_mae=8.55 val_sdnn_ms_mae=26.12 val_rmssd_ms_mae=27.40 val_pnn50_pct_mae=15.95
+epoch 005 train_loss=0.1110 val_hr_bpm_mae=6.48 val_sdnn_ms_mae=18.36 val_rmssd_ms_mae=17.07 val_pnn50_pct_mae=10.88
+epoch 006 train_loss=0.1059 val_hr_bpm_mae=5.07 val_sdnn_ms_mae=18.64 val_rmssd_ms_mae=17.85 val_pnn50_pct_mae=10.66
+epoch 007 train_loss=0.0923 val_hr_bpm_mae=3.96 val_sdnn_ms_mae=18.99 val_rmssd_ms_mae=17.76 val_pnn50_pct_mae=10.16
+epoch 008 train_loss=0.0828 val_hr_bpm_mae=5.02 val_sdnn_ms_mae=21.24 val_rmssd_ms_mae=20.82 val_pnn50_pct_mae=11.20
+epoch 009 train_loss=0.0748 val_hr_bpm_mae=4.00 val_sdnn_ms_mae=18.20 val_rmssd_ms_mae=16.83 val_pnn50_pct_mae=9.35
+epoch 010 train_loss=0.0667 val_hr_bpm_mae=4.22 val_sdnn_ms_mae=20.22 val_rmssd_ms_mae=18.30 val_pnn50_pct_mae=10.02
+epoch 011 train_loss=0.0644 val_hr_bpm_mae=3.71 val_sdnn_ms_mae=16.97 val_rmssd_ms_mae=17.31 val_pnn50_pct_mae=9.71
+epoch 012 train_loss=0.0576 val_hr_bpm_mae=3.65 val_sdnn_ms_mae=16.66 val_rmssd_ms_mae=16.16 val_pnn50_pct_mae=9.10
+epoch 013 train_loss=0.0515 val_hr_bpm_mae=4.07 val_sdnn_ms_mae=17.28 val_rmssd_ms_mae=16.72 val_pnn50_pct_mae=9.42
+epoch 014 train_loss=0.0468 val_hr_bpm_mae=3.88 val_sdnn_ms_mae=20.37 val_rmssd_ms_mae=19.21 val_pnn50_pct_mae=10.98
+epoch 015 train_loss=0.0443 val_hr_bpm_mae=3.80 val_sdnn_ms_mae=16.10 val_rmssd_ms_mae=17.41 val_pnn50_pct_mae=9.39
+epoch 016 train_loss=0.0421 val_hr_bpm_mae=3.85 val_sdnn_ms_mae=18.99 val_rmssd_ms_mae=19.82 val_pnn50_pct_mae=10.83
+epoch 017 train_loss=0.0384 val_hr_bpm_mae=3.56 val_sdnn_ms_mae=16.22 val_rmssd_ms_mae=17.02 val_pnn50_pct_mae=9.41
+epoch 018 train_loss=0.0369 val_hr_bpm_mae=3.31 val_sdnn_ms_mae=17.48 val_rmssd_ms_mae=17.90 val_pnn50_pct_mae=9.43
+epoch 019 train_loss=0.0328 val_hr_bpm_mae=3.64 val_sdnn_ms_mae=17.91 val_rmssd_ms_mae=18.32 val_pnn50_pct_mae=9.71
+epoch 020 train_loss=0.0314 val_hr_bpm_mae=3.71 val_sdnn_ms_mae=17.51 val_rmssd_ms_mae=17.30 val_pnn50_pct_mae=9.30
+epoch 021 train_loss=0.0308 val_hr_bpm_mae=3.30 val_sdnn_ms_mae=17.65 val_rmssd_ms_mae=17.87 val_pnn50_pct_mae=9.56
+epoch 022 train_loss=0.0276 val_hr_bpm_mae=3.23 val_sdnn_ms_mae=16.68 val_rmssd_ms_mae=17.19 val_pnn50_pct_mae=9.46
+epoch 023 train_loss=0.0270 val_hr_bpm_mae=3.44 val_sdnn_ms_mae=17.02 val_rmssd_ms_mae=17.25 val_pnn50_pct_mae=9.31
+epoch 024 train_loss=0.0268 val_hr_bpm_mae=3.31 val_sdnn_ms_mae=16.79 val_rmssd_ms_mae=17.06 val_pnn50_pct_mae=9.18
+epoch 025 train_loss=0.0258 val_hr_bpm_mae=3.24 val_sdnn_ms_mae=17.00 val_rmssd_ms_mae=17.62 val_pnn50_pct_mae=9.27
+epoch 026 train_loss=0.0254 val_hr_bpm_mae=3.26 val_sdnn_ms_mae=16.95 val_rmssd_ms_mae=17.62 val_pnn50_pct_mae=9.44
+epoch 027 train_loss=0.0239 val_hr_bpm_mae=3.33 val_sdnn_ms_mae=17.27 val_rmssd_ms_mae=17.50 val_pnn50_pct_mae=9.38
+epoch 028 train_loss=0.0236 val_hr_bpm_mae=3.29 val_sdnn_ms_mae=16.82 val_rmssd_ms_mae=17.28 val_pnn50_pct_mae=9.39
+epoch 029 train_loss=0.0221 val_hr_bpm_mae=3.16 val_sdnn_ms_mae=16.67 val_rmssd_ms_mae=17.29 val_pnn50_pct_mae=9.31
+epoch 030 train_loss=0.0228 val_hr_bpm_mae=3.24 val_sdnn_ms_mae=16.98 val_rmssd_ms_mae=17.45 val_pnn50_pct_mae=9.37
+test_hr_bpm_mae=3.85 test_sdnn_ms_mae=18.75 test_rmssd_ms_mae=20.58 test_pnn50_pct_mae=10.65
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task4-wrist2lead-5000-to-our-wrist1ch/unet/fold_3/best.pt
+================================================================================
+Training task4-wrist2lead-5000-to-our-wrist1ch | head=unet | fold=4
+Checkpoint: ./model_ckpt/wecg-wrist-2lead-5000-pretrain-300ep-bs16_bioFAME/ckpt.pt
+================================================================================
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([3581, 1, 5000]) torch.Size([3581, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([931, 1, 5000]) torch.Size([931, 4])
+Confirming data shape and label shape of our_wrist_hrv
+torch.Size([1016, 1, 5000]) torch.Size([1016, 4])
+Loaded compatible checkpoint tensors: 69
+Skipped incompatible tensors: 19
+Model tensors left randomly initialized: 6
+epoch 001 train_loss=0.1984 val_hr_bpm_mae=24.24 val_sdnn_ms_mae=30.06 val_rmssd_ms_mae=35.72 val_pnn50_pct_mae=29.42
+epoch 002 train_loss=0.1907 val_hr_bpm_mae=19.82 val_sdnn_ms_mae=29.21 val_rmssd_ms_mae=34.34 val_pnn50_pct_mae=27.15
+epoch 003 train_loss=0.1871 val_hr_bpm_mae=15.90 val_sdnn_ms_mae=29.61 val_rmssd_ms_mae=32.12 val_pnn50_pct_mae=25.56
+epoch 004 train_loss=0.1746 val_hr_bpm_mae=6.78 val_sdnn_ms_mae=28.33 val_rmssd_ms_mae=30.27 val_pnn50_pct_mae=17.10
+epoch 005 train_loss=0.1455 val_hr_bpm_mae=5.54 val_sdnn_ms_mae=26.10 val_rmssd_ms_mae=27.90 val_pnn50_pct_mae=15.60
+epoch 006 train_loss=0.1213 val_hr_bpm_mae=5.89 val_sdnn_ms_mae=20.09 val_rmssd_ms_mae=21.17 val_pnn50_pct_mae=12.71
+epoch 007 train_loss=0.1013 val_hr_bpm_mae=6.76 val_sdnn_ms_mae=21.95 val_rmssd_ms_mae=23.33 val_pnn50_pct_mae=13.44
+epoch 008 train_loss=0.0913 val_hr_bpm_mae=5.57 val_sdnn_ms_mae=21.70 val_rmssd_ms_mae=23.29 val_pnn50_pct_mae=14.06
+epoch 009 train_loss=0.0763 val_hr_bpm_mae=5.90 val_sdnn_ms_mae=19.88 val_rmssd_ms_mae=22.40 val_pnn50_pct_mae=12.49
+epoch 010 train_loss=0.0729 val_hr_bpm_mae=6.04 val_sdnn_ms_mae=20.96 val_rmssd_ms_mae=23.78 val_pnn50_pct_mae=14.27
+epoch 011 train_loss=0.0647 val_hr_bpm_mae=4.90 val_sdnn_ms_mae=20.97 val_rmssd_ms_mae=23.50 val_pnn50_pct_mae=13.82
+epoch 012 train_loss=0.0613 val_hr_bpm_mae=5.16 val_sdnn_ms_mae=20.01 val_rmssd_ms_mae=22.57 val_pnn50_pct_mae=12.65
+epoch 013 train_loss=0.0578 val_hr_bpm_mae=5.43 val_sdnn_ms_mae=20.74 val_rmssd_ms_mae=24.89 val_pnn50_pct_mae=14.20
+epoch 014 train_loss=0.0565 val_hr_bpm_mae=5.74 val_sdnn_ms_mae=22.77 val_rmssd_ms_mae=25.00 val_pnn50_pct_mae=14.35
+epoch 015 train_loss=0.0494 val_hr_bpm_mae=4.95 val_sdnn_ms_mae=20.53 val_rmssd_ms_mae=22.70 val_pnn50_pct_mae=12.28
+epoch 016 train_loss=0.0470 val_hr_bpm_mae=4.66 val_sdnn_ms_mae=20.51 val_rmssd_ms_mae=21.98 val_pnn50_pct_mae=12.55
+epoch 017 train_loss=0.0480 val_hr_bpm_mae=4.39 val_sdnn_ms_mae=20.02 val_rmssd_ms_mae=21.58 val_pnn50_pct_mae=12.31
+epoch 018 train_loss=0.0430 val_hr_bpm_mae=4.66 val_sdnn_ms_mae=20.34 val_rmssd_ms_mae=21.72 val_pnn50_pct_mae=12.58
+epoch 019 train_loss=0.0396 val_hr_bpm_mae=4.45 val_sdnn_ms_mae=20.20 val_rmssd_ms_mae=21.76 val_pnn50_pct_mae=12.52
+epoch 020 train_loss=0.0374 val_hr_bpm_mae=4.45 val_sdnn_ms_mae=19.91 val_rmssd_ms_mae=21.31 val_pnn50_pct_mae=12.34
+epoch 021 train_loss=0.0364 val_hr_bpm_mae=4.45 val_sdnn_ms_mae=19.60 val_rmssd_ms_mae=21.38 val_pnn50_pct_mae=12.09
+epoch 022 train_loss=0.0342 val_hr_bpm_mae=4.32 val_sdnn_ms_mae=19.26 val_rmssd_ms_mae=21.42 val_pnn50_pct_mae=12.07
+epoch 023 train_loss=0.0310 val_hr_bpm_mae=4.43 val_sdnn_ms_mae=19.48 val_rmssd_ms_mae=21.20 val_pnn50_pct_mae=12.10
+epoch 024 train_loss=0.0322 val_hr_bpm_mae=4.30 val_sdnn_ms_mae=19.32 val_rmssd_ms_mae=21.36 val_pnn50_pct_mae=12.10
+epoch 025 train_loss=0.0311 val_hr_bpm_mae=4.24 val_sdnn_ms_mae=19.59 val_rmssd_ms_mae=21.32 val_pnn50_pct_mae=12.20
+epoch 026 train_loss=0.0292 val_hr_bpm_mae=4.29 val_sdnn_ms_mae=19.53 val_rmssd_ms_mae=21.29 val_pnn50_pct_mae=12.20
+epoch 027 train_loss=0.0277 val_hr_bpm_mae=4.21 val_sdnn_ms_mae=19.61 val_rmssd_ms_mae=21.32 val_pnn50_pct_mae=12.09
+epoch 028 train_loss=0.0281 val_hr_bpm_mae=4.20 val_sdnn_ms_mae=19.59 val_rmssd_ms_mae=21.27 val_pnn50_pct_mae=12.08
+epoch 029 train_loss=0.0286 val_hr_bpm_mae=4.25 val_sdnn_ms_mae=19.47 val_rmssd_ms_mae=21.35 val_pnn50_pct_mae=12.10
+epoch 030 train_loss=0.0269 val_hr_bpm_mae=4.30 val_sdnn_ms_mae=19.46 val_rmssd_ms_mae=21.36 val_pnn50_pct_mae=12.08
+test_hr_bpm_mae=3.33 test_sdnn_ms_mae=17.60 test_rmssd_ms_mae=17.28 test_pnn50_pct_mae=10.65
+saved -> model_ckpt/downstream-5000-task134-5fold-unet-only/task4-wrist2lead-5000-to-our-wrist1ch/unet/fold_4/best.pt
+==============================================================================================================
+FINAL RESULTS - 5-FOLD WRIST ECG HR/HRV REGRESSION
+Metrics are fold-wise mean+-std across 5 folds
+HR: L1 regression metrics | HRV: within 5% of pooled GT range
+==============================================================================================================
+Dataset               HR MAE+STD      RMSE      L1<2      L1<5     L1<10%r     RMSSD      SDNN     pNN50       N
+--------------------------------------------------------------------------------------------------------------
+Gesture             3.40+0.37        5.06    45.50%    80.11%      92.14%    73.90%    55.14%    36.08%    1034
+Static              3.41+0.74        5.00    43.00%    80.86%      93.40%    76.64%    53.73%    35.13%      34
+Free Form           3.20+0.38        4.62    47.00%    82.23%      92.86%    80.51%    60.14%    47.97%      38
+--------------------------------------------------------------------------------------------------------------
