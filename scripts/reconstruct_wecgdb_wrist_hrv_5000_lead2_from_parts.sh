@@ -12,6 +12,9 @@ if [[ -d "${PART_DIR}" ]]; then
     if compgen -G "${PART_DIR}/${split}.pt.part-*" > /dev/null; then
       cat "${PART_DIR}/${split}.pt.part-"* > "${DATA_DIR}/${split}.pt"
       echo "reconstructed ${DATA_DIR}/${split}.pt"
+    elif [[ -f "${PART_DIR}/${split}.pt" ]]; then
+      cp "${PART_DIR}/${split}.pt" "${DATA_DIR}/${split}.pt"
+      echo "copied ${DATA_DIR}/${split}.pt"
     fi
   done
 fi
