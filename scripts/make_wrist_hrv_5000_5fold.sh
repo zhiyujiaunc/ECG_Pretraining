@@ -11,4 +11,6 @@ cd "${ML_FAMAE_DIR}"
   --data_dir ./data_our_wrist_hrv_5000 \
   --output_root ./data_our_wrist_hrv_5000_5fold \
   --n_folds 5 \
+  --split_mode intra_subject \
+  --val_ratio_of_trainval 0.2 \
   --seed 0
