@@ -216,11 +216,11 @@ def load_compatible_weights(model, checkpoint_path, device):
     return {"loaded": sorted(compatible.keys()), "skipped": sorted(skipped), "missing": sorted(missing)}
 
 
-def make_loader(data_dir, data_name, split, batch_size, num_workers, shuffle):
+def make_loader(data_dir, data_name, split, batch_size, num_workers, shuffle, modality):
     dataset = bioFAME_data(
         data_dir,
         filename=f"{split}.pt",
-        channels=["wrist"],
+        channels=modality,
         transforms=None,
         dataset_name=data_name,
     )
@@ -276,14 +276,14 @@ def evaluate(encoder, regressor, loader, device, label_mean, label_std, head):
 
 def train(args):
     device = torch.device(args.device)
-    train_loader = make_loader(args.data_dir, args.data_name, "train", args.batch_size, args.num_workers, shuffle=True)
-    val_loader = make_loader(args.data_dir, args.data_name, "val", args.batch_size, args.num_workers, shuffle=False)
-    test_loader = make_loader(args.data_dir, args.data_name, "test", args.batch_size, args.num_workers, shuffle=False)
+    train_loader = make_loader(args.data_dir, args.data_name, "train", args.batch_size, args.num_workers, shuffle=True, modality=args.modality)
+    val_loader = make_loader(args.data_dir, args.data_name, "val", args.batch_size, args.num_workers, shuffle=False, modality=args.modality)
+    test_loader = make_loader(args.data_dir, args.data_name, "test", args.batch_size, args.num_workers, shuffle=False, modality=args.modality)
 
     model_hparams = _hparams("bioFAME")
     model_hparams["encoder_only"] = True
     model_class = get_algorithm_class("bioFAME")
-    encoder = model_class(in_channel=1, length=args.length, n_classes=args.output_dim, hparams=model_hparams).to(device)
+    encoder = model_class(in_channel=args.mod_channels, length=args.length, n_classes=args.output_dim, hparams=model_hparams).to(device)
     load_report = load_compatible_weights(encoder, args.checkpoint, device)
 
     if args.chase_style:
@@ -427,6 +427,8 @@ def main():
     parser.add_argument("--device", choices=["cpu", "mps", "cuda"], default="cpu")
     parser.add_argument("--length", type=int, default=3000)
     parser.add_argument("--output_dim", type=int, default=1)
+    parser.add_argument("--modality", nargs="+", default=["wrist"])
+    parser.add_argument("--mod_channels", type=int, default=1)
     parser.add_argument("--batch_size", type=int, default=128)
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--epochs", type=int, default=30)

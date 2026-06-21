@@ -27,6 +27,14 @@ def activity_from_file(path):
     return "Unknown"
 
 
+def row_group(row):
+    if "activity" in row:
+        return row["activity"]
+    if "dataset" in row:
+        return row["dataset"]
+    return activity_from_file(row["file"])
+
+
 def load_model(checkpoint_path, device):
     checkpoint = torch.load(checkpoint_path, map_location=device)
     args = checkpoint.get("args", {})
@@ -35,10 +43,11 @@ def load_model(checkpoint_path, device):
     head = args.get("head", "cnn")
     hidden_dim = int(args.get("hidden_dim", 64))
     dropout = float(args.get("dropout", 0.2))
+    mod_channels = int(args.get("mod_channels", 1))
 
     hparams = _hparams("bioFAME")
     hparams["encoder_only"] = True
-    encoder = get_algorithm_class("bioFAME")(in_channel=1, length=length, n_classes=output_dim, hparams=hparams).to(device)
+    encoder = get_algorithm_class("bioFAME")(in_channel=mod_channels, length=length, n_classes=output_dim, hparams=hparams).to(device)
     encoder.load_state_dict(checkpoint["encoder"])
     encoder.eval()
 
@@ -104,7 +113,10 @@ def print_table(title, group_metrics):
     pnn50_header = f"{'pNN50':>10}" if has_pnn50 else ""
     print(f"{'Dataset':<16}{'HR MAE+STD':>16}{'RMSE':>10}{'L1<2':>10}{'L1<5':>10}{'L1<10%r':>12}{'RMSSD':>10}{'SDNN':>10}{pnn50_header}{'N':>8}")
     print("-" * 110)
-    for name in ("Gesture", "Static", "Free Form"):
+    preferred_order = ["Gesture", "Static", "Free Form", "wECGdb Wrist", "Unknown"]
+    names = [name for name in preferred_order if name in group_metrics]
+    names.extend(sorted(name for name in group_metrics if name not in names))
+    for name in names:
         if name not in group_metrics:
             continue
         row = group_metrics[name]
@@ -152,7 +164,7 @@ def main():
 
         preds = predict(encoder, regressor, samples, label_mean, label_std, head, device, args.batch_size)
         for index, row in enumerate(rows):
-            activity = activity_from_file(row["file"])
+            activity = row_group(row)
             group_preds.setdefault(activity, []).append(preds[index])
             group_targets.setdefault(activity, []).append(targets[index])
 

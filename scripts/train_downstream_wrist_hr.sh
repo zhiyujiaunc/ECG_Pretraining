@@ -15,6 +15,8 @@ CHECKPOINT="${CHECKPOINT:-./model_ckpt/wecg-12lead-pretrain-50ep_bioFAME/ckpt.pt
 HEAD="${HEAD:-cnn}"
 LENGTH="${LENGTH:-3000}"
 OUTPUT_DIM="${OUTPUT_DIM:-1}"
+MODALITY="${MODALITY:-wrist}"
+MOD_CHANNELS="${MOD_CHANNELS:-1}"
 OUTPUT_DIR="${OUTPUT_DIR:-./model_ckpt/our-wrist-hr-${HEAD}-from-12lead-50ep}"
 LR="${LR:-1e-3}"
 ENCODER_LR="${ENCODER_LR:-1e-4}"
@@ -42,6 +44,9 @@ fi
 
 cd "${ML_FAMAE_DIR}"
 
+# shellcheck disable=SC2206
+modality_array=(${MODALITY})
+
 "${PYTHON_BIN}" downstream_wrist_hr.py \
   --data_dir "${DATA_DIR}" \
   --data_name "${DATA_NAME}" \
@@ -53,6 +58,8 @@ cd "${ML_FAMAE_DIR}"
   --epochs "${EPOCHS}" \
   --length "${LENGTH}" \
   --output_dim "${OUTPUT_DIM}" \
+  --modality "${modality_array[@]}" \
+  --mod_channels "${MOD_CHANNELS}" \
   --head "${HEAD}" \
   --lr "${LR}" \
   --encoder_lr "${ENCODER_LR}" \
