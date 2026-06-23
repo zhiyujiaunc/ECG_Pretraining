@@ -36,4 +36,6 @@ if [[ -n "${CHANNEL_INDICES:-}" ]]; then
   cmd+=(--channel_indices "${channel_indices_array[@]}")
 fi
 
+cmd+=("$@")
+
 "${cmd[@]}"

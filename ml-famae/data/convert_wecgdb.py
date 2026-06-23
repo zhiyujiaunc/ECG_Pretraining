@@ -79,6 +79,12 @@ def _windows(recording, window_size, stride, zscore):
         yield segment.astype(np.float32, copy=False)
 
 
+def _flatten_channels_as_single_channel(segment):
+    # Convert [channel, time] into one [1, time] sample per channel.
+    for channel_index in range(segment.shape[0]):
+        yield segment[channel_index : channel_index + 1]
+
+
 def _split_subjects(files, val_ratio, test_ratio, seed):
     files = list(files)
     random.Random(seed).shuffle(files)
@@ -113,8 +119,13 @@ def convert(args):
                 ):
                     fs_values.add(fs)
                     for segment in _windows(recording, args.window_size, args.stride, args.zscore):
-                        split_samples[split_name].append(torch.from_numpy(segment))
-                        split_labels[split_name].append(torch.tensor(0, dtype=torch.long))
+                        if args.flatten_channels_as_samples:
+                            for single_channel_segment in _flatten_channels_as_single_channel(segment):
+                                split_samples[split_name].append(torch.from_numpy(single_channel_segment))
+                                split_labels[split_name].append(torch.tensor(0, dtype=torch.long))
+                        else:
+                            split_samples[split_name].append(torch.from_numpy(segment))
+                            split_labels[split_name].append(torch.tensor(0, dtype=torch.long))
 
                 if args.max_subjects and subject_index + 1 >= args.max_subjects:
                     break
@@ -124,7 +135,9 @@ def convert(args):
                 samples = torch.stack(split_samples[split_name], dim=0)
                 labels = torch.stack(split_labels[split_name], dim=0)
             else:
-                if args.channel_indices:
+                if args.flatten_channels_as_samples:
+                    n_channels = 1
+                elif args.channel_indices:
                     n_channels = len(args.channel_indices)
                 elif args.channel_names:
                     n_channels = len(args.channel_names)
@@ -154,6 +167,11 @@ def main():
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--max_subjects", type=int, default=0)
     parser.add_argument("--zscore", action="store_true")
+    parser.add_argument(
+        "--flatten_channels_as_samples",
+        action="store_true",
+        help="Store each selected channel as an independent one-channel sample.",
+    )
     args = parser.parse_args()
     convert(args)
 

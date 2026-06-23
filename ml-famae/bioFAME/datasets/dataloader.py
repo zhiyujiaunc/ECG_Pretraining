@@ -72,6 +72,13 @@ wECGdb_12lead = {
     'V6': 11,
 }
 
+wECGdb_12lead_as_1ch = {
+    'training-set-fixed-scaling': 1,
+    'trim': 5000,
+    'default': 0,
+    'ecg': 0,
+}
+
 wECGdb_wrist = {
     'training-set-fixed-scaling': 1,
     'default': 0,
