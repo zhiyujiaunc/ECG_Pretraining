@@ -18,7 +18,9 @@ def flatten_split(input_path, output_path):
     if n_channels != len(LEADS):
         raise ValueError(f"Expected 12 channels, got {n_channels}")
 
-    flattened = samples.reshape(n_samples * n_channels, 1, length).contiguous()
+    # Channel independence: fold channel into the sample axis.
+    # [N, 12, L] -> [N*12, 1, L]. This does not concatenate leads along time.
+    flattened = samples.contiguous().reshape(n_samples * n_channels, 1, length)
     labels = torch.zeros(flattened.shape[0], dtype=torch.long)
     torch.save({"samples": flattened, "labels": labels}, output_path)
     return {
@@ -26,6 +28,9 @@ def flatten_split(input_path, output_path):
         "output": str(output_path),
         "input_shape": list(samples.shape),
         "output_shape": list(flattened.shape),
+        "operation": "[N, 12, L] -> [N*12, 1, L]",
+        "channel_folded_into_batch": True,
+        "time_concatenation": False,
     }
 
 
@@ -42,6 +47,7 @@ def main():
     metadata = {
         "source": str(input_dir),
         "description": "Each original 12-lead ECG window is flattened into 12 independent one-channel ECG windows.",
+        "channel_independence_definition": "Fold channel into batch/sample dimension: [N, 12, L] -> [N*12, 1, L]. The time dimension stays length L.",
         "leads": LEADS,
         "splits": {},
     }
