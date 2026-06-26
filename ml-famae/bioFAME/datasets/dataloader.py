@@ -86,6 +86,13 @@ wECGdb_wrist = {
     'lead_wrist': 1,
 }
 
+wECGdb_wrist_2lead_as_1ch = {
+    'training-set-fixed-scaling': 1,
+    'trim': 5000,
+    'default': 0,
+    'ecg': 0,
+}
+
 wECGdb_wrist_hrv_5000 = {
     'training-set-fixed-scaling': 1,
     'trim': 5000,
